@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="taskOverviewEditPageDef"
+                Package="com.dmcsol.xdm.taskmgr.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variableUsage DataControl="TaskMgrServiceDataControl" Binds="TaskVO.variablesMap.pResponsible"
+                     Name="ExecuteWithParams_pResponsible" IsQueriable="false"/>
+      <variableUsage DataControl="TaskMgrServiceDataControl" Binds="TaskVO.variablesMap.pProgramme"
+                     Name="ExecuteWithParams_pProgramme" IsQueriable="false"/>
+      <variableUsage DataControl="TaskMgrServiceDataControl" Binds="TaskVO.variablesMap.pText"
+                     Name="ExecuteWithParams_pText" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="TaskVO" RangeSize="25" DataControl="TaskMgrServiceDataControl" id="TaskVOIterator"/>
+    <iterator Binds="ProgrammerManagerLOV" RangeSize="-1" DataControl="XdmLovServiceDataControl"
+              id="ProgrammerManagerLOVIterator"/>
+    <iterator Binds="ProgrammeLOV" RangeSize="-1" DataControl="XdmLovServiceDataControl" id="ProgrammeLOVIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TaskVOIterator" id="TaskVO">
+      <nodeDefinition DefName="com.dmcsol.xdm.taskmgr.model.view.TaskVO" Name="TaskVO0">
+        <AttrNames>
+          <Item Value="StartDate"/>
+          <Item Value="Text"/>
+          <Item Value="StartWhere"/>
+          <Item Value="FlightNo"/>
+          <Item Value="EndDate"/>
+          <Item Value="EndWhere"/>
+          <Item Value="Pax"/>
+          <Item Value="ElemKey"/>
+          <Item Value="Remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TaskVOIterator" id="ExecuteWithParams" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="pResponsible" NDType="java.lang.String" NDValue="${bindings.ExecuteWithParams_pResponsible}"/>
+      <NamedData NDName="pProgramme" NDType="java.lang.String" NDValue="${bindings.ExecuteWithParams_pProgramme}"/>
+      <NamedData NDName="pText" NDType="java.lang.String" NDValue="${bindings.ExecuteWithParams_pText}"/>
+    </action>
+    <list IterBinding="variables" id="pResponsible" DTSupportsMRU="true"
+          StaticList="false" ListIter="ProgrammerManagerLOVIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_pResponsible"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="PersId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Initials"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="pProgramme" DTSupportsMRU="true"
+          StaticList="false" ListIter="ProgrammeLOVIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_pProgramme"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="ProgId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Name"/>
+      </ListDisplayAttrNames>
+    </list>
+    <attributeValues IterBinding="variables" id="pText">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_pText"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="TaskMgrServiceDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="TaskMgrServiceDataControl"/>
+  </bindings>
+</pageDefinition>

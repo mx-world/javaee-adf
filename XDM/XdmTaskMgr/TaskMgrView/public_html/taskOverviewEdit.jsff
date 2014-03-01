@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGridLayout id="pgl1">
+    <af:gridRow height="50px" id="gr3">
+      <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+        <!-- Header -->
+        <af:panelGroupLayout id="pgl2" layout="horizontal">
+          <af:selectOneChoice value="#{bindings.pResponsible.inputValue}" label="Responsible"
+                              required="#{bindings.pResponsible.hints.mandatory}"
+                              shortDesc="#{bindings.pResponsible.hints.tooltip}" id="soc2">
+            <f:selectItems value="#{bindings.pResponsible.items}" id="si2"/>
+            <f:validator binding="#{bindings.pResponsible.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.pProgramme.inputValue}" label="Programme"
+                              required="#{bindings.pProgramme.hints.mandatory}"
+                              shortDesc="#{bindings.pProgramme.hints.tooltip}" id="soc3">
+            <f:selectItems value="#{bindings.pProgramme.items}" id="si3"/>
+            <f:validator binding="#{bindings.pProgramme.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.pText.inputValue}" label="Text"
+                        required="#{bindings.pText.hints.mandatory}" columns="#{bindings.pText.hints.displayWidth}"
+                        maximumLength="#{bindings.pText.hints.precision}" shortDesc="#{bindings.pText.hints.tooltip}"
+                        id="it7">
+            <f:validator binding="#{bindings.pText.validator}"/>
+          </af:inputText>
+          <af:button actionListener="#{bindings.ExecuteWithParams.execute}" text="Search"
+                     disabled="#{!bindings.ExecuteWithParams.enabled}" id="b1"/>
+        </af:panelGroupLayout>
+      </af:gridCell>
+    </af:gridRow>
+    <af:gridRow height="100%" id="gr2">
+      <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+        <!-- Content -->
+        <af:table value="#{bindings.TaskVO.collectionModel}" var="row" rows="#{bindings.TaskVO.rangeSize}"
+                  emptyText="#{bindings.TaskVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" fetchSize="#{bindings.TaskVO.rangeSize}" id="t1" columnStretching="cplumn:c2"
+                  partialTriggers="::b1">
+          <af:column sortProperty="#{bindings.TaskVO.hints.StartDate.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.StartDate.label}" id="c1">
+            <af:inputDate value="#{row.bindings.StartDate.inputValue}" label="#{bindings.TaskVO.hints.StartDate.label}"
+                          required="#{bindings.TaskVO.hints.StartDate.mandatory}"
+                          columns="#{bindings.TaskVO.hints.StartDate.displayWidth}"
+                          shortDesc="#{bindings.TaskVO.hints.StartDate.tooltip}" id="id1">
+              <f:validator binding="#{row.bindings.StartDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.TaskVO.hints.StartDate.format}"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.Text.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.Text.label}" id="c2">
+            <af:inputText value="#{row.bindings.Text.inputValue}" label="#{bindings.TaskVO.hints.Text.label}"
+                          required="#{bindings.TaskVO.hints.Text.mandatory}"
+                          columns="#{bindings.TaskVO.hints.Text.displayWidth}"
+                          maximumLength="#{bindings.TaskVO.hints.Text.precision}"
+                          shortDesc="#{bindings.TaskVO.hints.Text.tooltip}" id="it1">
+              <f:validator binding="#{row.bindings.Text.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.StartWhere.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.StartWhere.label}" id="c3">
+            <af:inputText value="#{row.bindings.StartWhere.inputValue}"
+                          label="#{bindings.TaskVO.hints.StartWhere.label}"
+                          required="#{bindings.TaskVO.hints.StartWhere.mandatory}"
+                          columns="#{bindings.TaskVO.hints.StartWhere.displayWidth}"
+                          maximumLength="#{bindings.TaskVO.hints.StartWhere.precision}"
+                          shortDesc="#{bindings.TaskVO.hints.StartWhere.tooltip}" id="it2">
+              <f:validator binding="#{row.bindings.StartWhere.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.FlightNo.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.FlightNo.label}" id="c4">
+            <af:inputText value="#{row.bindings.FlightNo.inputValue}" label="#{bindings.TaskVO.hints.FlightNo.label}"
+                          required="#{bindings.TaskVO.hints.FlightNo.mandatory}"
+                          columns="#{bindings.TaskVO.hints.FlightNo.displayWidth}"
+                          maximumLength="#{bindings.TaskVO.hints.FlightNo.precision}"
+                          shortDesc="#{bindings.TaskVO.hints.FlightNo.tooltip}" id="it3">
+              <f:validator binding="#{row.bindings.FlightNo.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.EndDate.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.EndDate.label}" id="c5">
+            <af:inputDate value="#{row.bindings.EndDate.inputValue}" label="#{bindings.TaskVO.hints.EndDate.label}"
+                          required="#{bindings.TaskVO.hints.EndDate.mandatory}"
+                          columns="#{bindings.TaskVO.hints.EndDate.displayWidth}"
+                          shortDesc="#{bindings.TaskVO.hints.EndDate.tooltip}" id="id2">
+              <f:validator binding="#{row.bindings.EndDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.TaskVO.hints.EndDate.format}"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.EndWhere.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.EndWhere.label}" id="c6">
+            <af:inputText value="#{row.bindings.EndWhere.inputValue}" label="#{bindings.TaskVO.hints.EndWhere.label}"
+                          required="#{bindings.TaskVO.hints.EndWhere.mandatory}"
+                          columns="#{bindings.TaskVO.hints.EndWhere.displayWidth}"
+                          maximumLength="#{bindings.TaskVO.hints.EndWhere.precision}"
+                          shortDesc="#{bindings.TaskVO.hints.EndWhere.tooltip}" id="it4">
+              <f:validator binding="#{row.bindings.EndWhere.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.Pax.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.Pax.label}" id="c7">
+            <af:inputText value="#{row.bindings.Pax.inputValue}" label="#{bindings.TaskVO.hints.Pax.label}"
+                          required="#{bindings.TaskVO.hints.Pax.mandatory}"
+                          columns="#{bindings.TaskVO.hints.Pax.displayWidth}"
+                          maximumLength="#{bindings.TaskVO.hints.Pax.precision}"
+                          shortDesc="#{bindings.TaskVO.hints.Pax.tooltip}" id="it5">
+              <f:validator binding="#{row.bindings.Pax.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TaskVO.hints.Pax.format}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.ElemKey.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.ElemKey.label}" id="c8">
+            <af:selectOneChoice value="#{row.bindings.ElemKey.inputValue}" label="#{row.bindings.ElemKey.label}"
+                                required="#{bindings.TaskVO.hints.ElemKey.mandatory}"
+                                shortDesc="#{bindings.TaskVO.hints.ElemKey.tooltip}" id="soc1">
+              <f:selectItems value="#{row.bindings.ElemKey.items}" id="si1"/>
+              <f:validator binding="#{row.bindings.ElemKey.validator}"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="#{bindings.TaskVO.hints.Remarks.name}" sortable="true"
+                     headerText="#{bindings.TaskVO.hints.Remarks.label}" id="c9">
+            <af:inputText value="#{row.bindings.Remarks.inputValue}" label="#{bindings.TaskVO.hints.Remarks.label}"
+                          required="#{bindings.TaskVO.hints.Remarks.mandatory}"
+                          columns="#{bindings.TaskVO.hints.Remarks.displayWidth}"
+                          maximumLength="#{bindings.TaskVO.hints.Remarks.precision}"
+                          shortDesc="#{bindings.TaskVO.hints.Remarks.tooltip}" id="it6">
+              <f:validator binding="#{row.bindings.Remarks.validator}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+      </af:gridCell>
+    </af:gridRow>
+    <af:gridRow height="50px" id="gr1">
+      <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc3">
+        <!-- Footer -->
+        <af:panelGroupLayout id="pgl3" layout="horizontal">
+          <af:button actionListener="#{bindings.Commit.execute}" text="OK" id="b2"/>
+          <af:button actionListener="#{bindings.Rollback.execute}" text="Cancel" immediate="true" id="b3">
+            <af:resetActionListener/>
+          </af:button>
+        </af:panelGroupLayout>
+      </af:gridCell>
+    </af:gridRow>
+  </af:panelGridLayout>
+</ui:composition>

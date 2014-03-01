@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProgrammeLOV"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="XdmProgrammes.NAME, 
+       XdmProgrammes.PROG_ID"
+  FromList="XDM_PROGRAMMES XdmProgrammes"
+  OrderBy="XdmProgrammes.NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="com.dmcsol.xdm.common.framework.ViewRowImpl"
+  ComponentClass="com.dmcsol.xdm.common.framework.ViewObjectImpl"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.dmcsol.xdm.model.view.lov.ProgrammeLOV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="XdmProgrammes"
+    Entity="com.dmcsol.xdm.model.entity.XdmProgrammes"
+    ReadOnly="true"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="Name"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="XdmProgrammes"
+    AliasName="NAME"/>
+  <ViewAttribute
+    Name="ProgId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="ProgId"
+    EntityUsage="XdmProgrammes"
+    AliasName="PROG_ID"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.dmcsol.xdm.model.CommonModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

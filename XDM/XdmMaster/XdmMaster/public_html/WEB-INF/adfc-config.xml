@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Xdm">
+    <page>/Xdm.jsf</page>
+  </view>
+  <managed-bean id="__1">
+    <managed-bean-name>PageSwitcherBean</managed-bean-name>
+    <managed-bean-class>com.dmcsol.xdm.beans.PageSwitcher</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+    <managed-property id="__4">
+      <property-name>uiState</property-name>
+      <property-class>com.dmcsol.xdm.beans.UiState</property-class>
+      <value>#{pageFlowScope.UiStateBean}</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>UiStateBean</managed-bean-name>
+    <managed-bean-class>com.dmcsol.xdm.beans.UiState</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

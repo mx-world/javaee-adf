@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.dmcsol.xdm.sched.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/personTimeline.jsff" usageId="com_dmcsol_xdm_sched_view_personTimelinePageDef"/>
+    <page path="/testpages/TestPersonTimeline.jsf" usageId="com_dmcsol_xdm_sched_view_TestPersonTimelinePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_dmcsol_xdm_sched_view_personTimelinePageDef"
+          path="com.dmcsol.xdm.sched.view.pageDefs.personTimelinePageDef"/>
+    <page id="com_dmcsol_xdm_sched_view_TestPersonTimelinePageDef" path="testpages.TestPersonTimelinePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="XdmSchedServiceDataControl" Package="com.dmcsol.xdm.sched.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="XdmSchedServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

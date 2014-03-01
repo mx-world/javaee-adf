@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="y">251.20117</property>
+      <property
+         name="x">88.01758</property>
+   </OverallProperties>
+   <View
+      id="View2">
+      <property
+         name="inherited">true</property>
+      <property
+         name="activityId">exceptionPage</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>exceptionPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">83.5</property>
+      <property
+         name="x">88.01758</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">taskOverviewEdit</property>
+      <property
+         name="page">/taskOverviewEdit.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>taskOverviewEdit&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">91.59766</property>
+      <property
+         name="x">353.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+</SDM>

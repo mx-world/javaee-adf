@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TaskMgrModel"
+  Version="12.1.2.66.68"
+  SeparateXMLFiles="true"
+  PackageName="com.dmcsol.xdm.taskmgr.model">
+  <DesignTime>
+    <Attr Name="_useAnsiJoinSyntax" Value="true"/>
+    <Attr Name="_jprName" Value="../../../../../../TaskMgrModel.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="xdm"/>
+    <Attr Name="_appModuleNames0" Value="com.dmcsol.xdm.taskmgr.model.am.TaskMgrService"/>
+  </DesignTime>
+  <Containee
+    Name="am"
+    PackageName="com.dmcsol.xdm.taskmgr.model.am"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="view"
+    PackageName="com.dmcsol.xdm.taskmgr.model.view"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <AppContainee
+    Name="CommonCode"
+    FullName="com.dmcsol.xdm.common.CommonCode"
+    ObjectType="JboProject">
+    <DesignTime>
+      <Attr Name="_SourceName" Value="adflibXdmCommonCode.jar"/>
+    </DesignTime>
+  </AppContainee>
+  <AppContainee
+    Name="CommonModel"
+    FullName="com.dmcsol.xdm.model.CommonModel"
+    ObjectType="JboProject">
+    <DesignTime>
+      <Attr Name="_SourceName" Value="adflibXdmCommonModel.jar"/>
+    </DesignTime>
+  </AppContainee>
+</JboProject>

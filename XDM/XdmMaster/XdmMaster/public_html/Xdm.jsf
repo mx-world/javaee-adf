@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Next Generation Destination Management" id="d1">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/WEB-INF/XdmPageTemplate.jsf" id="pt1">
+                <f:facet name="main">
+                    <af:panelGroupLayout id="pgl1" layout="vertical">
+                        <af:menuBar id="mb1">
+                            <af:menu text="Tasks" id="m1">
+                                <af:commandMenuItem text="Overview / Edit" id="cmi1">
+                                            <af:setPropertyListener from="#{'/WEB-INF/task-overview-edit-flow.xml#task-overview-edit-flow'}"
+                                                                    to="#{pageFlowScope.UiStateBean.currentTF}"
+                                                                    type="action"/>
+                                        </af:commandMenuItem>
+                                        <af:commandMenuItem text="Timeline" id="cmi2">
+                                            <af:setPropertyListener to="#{pageFlowScope.UiStateBean.currentTF}"
+                                                                    type="action"
+                                                                    from="#{'/WEB-INF/person-timeline-flow.xml#person-timeline-flow'}"/>
+                                        </af:commandMenuItem>
+                            </af:menu>
+                        </af:menuBar>
+                        <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                                   partialTriggers="::cmi1 ::cmi2"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:attribute name="PageTitle" value="Next Generation Destination Management"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

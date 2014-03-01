@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="personTimelinePageDef"
+                Package="com.dmcsol.xdm.sched.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Person" RangeSize="-1" DataControl="XdmSchedServiceDataControl" id="PersonIterator"/>
+    <iterator Binds="MinMaxDate" RangeSize="10" DataControl="XdmSchedServiceDataControl" id="MinMaxDateIterator"/>
+  </executables>
+  <bindings>
+    <gantt IterBinding="PersonIterator" id="Person" xmlns="http://xmlns.oracle.com/adfm/dvt">
+      <ganttDataMap>
+        <nodeDefinition DefName="com.dmcsol.xdm.sched.model.view.PersonVO" type="Resources">
+          <AttrNames>
+            <Item Value="PersId" type="resourceId"/>
+          </AttrNames>
+          <Accessors>
+            <Item Value="TaskSchedVO" type="tasks"/>
+          </Accessors>
+        </nodeDefinition>
+        <nodeDefinition type="Tasks" DefName="com.dmcsol.xdm.sched.model.view.TaskSchedVO">
+          <AttrNames>
+            <Item Value="TaskId" type="taskId"/>
+            <Item Value="StartDate" type="startTime"/>
+            <Item Value="EndDate" type="endTime"/>
+          </AttrNames>
+        </nodeDefinition>
+        <nodeDefinition type="Dependents">
+          <AttrNames/>
+        </nodeDefinition>
+        <nodeDefinition type="SplitTasks">
+          <AttrNames/>
+        </nodeDefinition>
+        <nodeDefinition type="RecurringTasks">
+          <AttrNames/>
+        </nodeDefinition>
+        <nodeDefinition type="Subresources">
+          <AttrNames/>
+        </nodeDefinition>
+      </ganttDataMap>
+    </gantt>
+    <attributeValues IterBinding="MinMaxDateIterator" id="MinStartDate">
+      <AttrNames>
+        <Item Value="MinStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MinMaxDateIterator" id="MaxEndDate">
+      <AttrNames>
+        <Item Value="MaxEndDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

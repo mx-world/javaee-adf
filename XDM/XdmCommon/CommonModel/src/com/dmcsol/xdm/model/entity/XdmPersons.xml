@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XdmPersons"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XDM_PERSONS"
+  AliasName="XdmPersons"
+  BindingStyle="OracleName"
+  RowClass="com.dmcsol.xdm.common.framework.EntityImpl">
+  <Attribute
+    Name="PersId"
+    Precision="12"
+    Scale="0"
+    ColumnName="PERS_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="XDM_PERSONS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="Initials"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="5"
+    ColumnName="INITIALS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_PERSONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FirstName"
+    Precision="80"
+    ColumnName="FIRST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_PERSONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastName"
+    Precision="80"
+    ColumnName="LAST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_PERSONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProgrammeManagerYn"
+    Precision="1"
+    ColumnName="PROGRAMME_MANAGER_YN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_PERSONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="XdmProgrammes"
+    Association="com.dmcsol.xdm.model.assoc.XdmProgPersFkAssoc"
+    AssociationEnd="com.dmcsol.xdm.model.assoc.XdmProgPersFkAssoc.XdmProgrammes"
+    AssociationOtherEnd="com.dmcsol.xdm.model.assoc.XdmProgPersFkAssoc.XdmPersons"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="XdmTasks"
+    Association="com.dmcsol.xdm.model.assoc.XdmPersTaskFkAssoc"
+    AssociationEnd="com.dmcsol.xdm.model.assoc.XdmPersTaskFkAssoc.XdmTasks"
+    AssociationOtherEnd="com.dmcsol.xdm.model.assoc.XdmPersTaskFkAssoc.XdmPersons"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="XdmPersInitialsUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XDM_PERS_INITIALS_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.model.entity.XdmPersons.Initials"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XdmPersonsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XDM_PERSONS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.model.entity.XdmPersons.PersId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XdmElementsDefaultVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="XdmElements.ELEM_KEY, 
+       XdmElements.SUPL_ID, 
+       XdmElements.DESCRIPTION, 
+       XdmElements.MAX_PAX"
+  FromList="XDM_ELEMENTS XdmElements"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="com.dmcsol.xdm.common.framework.ViewRowImpl"
+  ComponentClass="com.dmcsol.xdm.common.framework.ViewObjectImpl"
+  PageIterMode="Full">
+  <EntityUsage
+    Name="XdmElements"
+    Entity="com.dmcsol.xdm.model.entity.XdmElements"/>
+  <ViewAttribute
+    Name="ElemKey"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ElemKey"
+    EntityUsage="XdmElements"
+    AliasName="ELEM_KEY"/>
+  <ViewAttribute
+    Name="SuplId"
+    PrecisionRule="true"
+    EntityAttrName="SuplId"
+    EntityUsage="XdmElements"
+    AliasName="SUPL_ID"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="XdmElements"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="MaxPax"
+    PrecisionRule="true"
+    EntityAttrName="MaxPax"
+    EntityUsage="XdmElements"
+    AliasName="MAX_PAX"/>
+</ViewObject>

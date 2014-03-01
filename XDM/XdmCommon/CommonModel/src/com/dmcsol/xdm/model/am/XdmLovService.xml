@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XdmLovService"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  ComponentClass="com.dmcsol.xdm.common.framework.ApplicationModuleImpl"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.dmcsol.xdm.model.am.XdmLovService_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="ProgrammeLOV"
+    ViewObjectName="com.dmcsol.xdm.model.view.lov.ProgrammeLOV"/>
+  <ViewUsage
+    Name="ProgrammerManagerLOV"
+    ViewObjectName="com.dmcsol.xdm.model.view.lov.ProgrammerManagerLOV"/>
+  <ViewUsage
+    Name="ServiceLOV"
+    ViewObjectName="com.dmcsol.xdm.model.view.lov.ServiceLOV"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.dmcsol.xdm.model.CommonModelBundle"/>
+  </ResourceBundle>
+</AppModule>

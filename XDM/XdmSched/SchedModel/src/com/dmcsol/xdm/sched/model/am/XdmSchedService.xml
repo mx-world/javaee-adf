@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XdmSchedService"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  ComponentClass="com.dmcsol.xdm.common.framework.ApplicationModuleImpl"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.dmcsol.xdm.sched.model.am.XdmSchedService_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="Person"
+    ViewObjectName="com.dmcsol.xdm.sched.model.view.PersonVO"/>
+  <ViewUsage
+    Name="PersonTask"
+    ViewObjectName="com.dmcsol.xdm.sched.model.view.TaskSchedVO"/>
+  <ViewUsage
+    Name="MinMaxDate"
+    ViewObjectName="com.dmcsol.xdm.sched.model.view.MinMaxDateVO"/>
+  <ViewLinkUsage
+    Name="PersonTaskLink1"
+    ViewLinkObjectName="com.dmcsol.xdm.sched.model.viewlink.PersonTaskLink"
+    SrcViewUsageName="com.dmcsol.xdm.sched.model.am.XdmSchedService.Person"
+    DstViewUsageName="com.dmcsol.xdm.sched.model.am.XdmSchedService.PersonTask"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.dmcsol.xdm.sched.model.SchedModelBundle"/>
+  </ResourceBundle>
+</AppModule>

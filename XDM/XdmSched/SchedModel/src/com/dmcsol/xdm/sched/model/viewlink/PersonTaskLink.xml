@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PersonTaskLink"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.dmcsol.xdm.sched.model.viewlink.PersonTaskLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="PersonVO"
+    Cardinality="1"
+    Source="true"
+    Owner="com.dmcsol.xdm.sched.model.view.PersonVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PersonVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.sched.model.view.PersonVO.PersId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="TaskSchedVO"
+    Cardinality="-1"
+    Owner="com.dmcsol.xdm.sched.model.view.TaskSchedVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="TaskSchedVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.sched.model.view.TaskSchedVO.PersId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.dmcsol.xdm.sched.model.SchedModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

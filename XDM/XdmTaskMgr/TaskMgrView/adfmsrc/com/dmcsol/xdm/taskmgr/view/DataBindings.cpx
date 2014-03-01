@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.dmcsol.xdm.taskmgr.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/taskOverviewEdit.jsff" usageId="com_dmcsol_xdm_taskmgr_view_taskOverviewEditPageDef"/>
+    <page path="/testpages/TestTaskOverviewEdit.jsf" usageId="com_dmcsol_xdm_taskmgr_view_TestTaskOverviewEditPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_dmcsol_xdm_taskmgr_view_taskOverviewEditPageDef"
+          path="com.dmcsol.xdm.taskmgr.view.pageDefs.taskOverviewEditPageDef"/>
+    <page id="com_dmcsol_xdm_taskmgr_view_TestTaskOverviewEditPageDef" path="testpages.TestTaskOverviewEditPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="TaskMgrServiceDataControl" Package="com.dmcsol.xdm.taskmgr.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="TaskMgrServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="XdmLovServiceDataControl" Package="com.dmcsol.xdm.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="XdmLovServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <dvt:schedulingGantt id="gantt1" value="#{bindings.Person.schedulingGanttModel}"
+                                     dataChangeListener="#{bindings.Person.schedulingGanttModel.processDataChanged}"
+                                     var="row" startTime="#{bindings.MinStartDate.inputValue}"
+                                     endTime="#{bindings.MaxEndDate.inputValue}">
+                    <f:facet name="major">
+                        <dvt:timeAxis scale="weeks" id="ta1"/>
+                    </f:facet>
+                    <f:facet name="minor">
+                        <dvt:timeAxis scale="days" id="ta2"/>
+                    </f:facet>
+                    <f:facet name="nodeStamp">
+                        <af:column sortProperty="#{bindings.Person.hints.FirstName.name}" sortable="false"
+                                   headerText="#{bindings.Person.hints.FirstName.label}" id="c1">
+                            <af:outputText value="#{row.FirstName}"
+                                           shortDesc="#{bindings.Person.hints.FirstName.tooltip}" id="ot1"/>
+                        </af:column>
+                    </f:facet>
+                    <af:column sortProperty="#{bindings.Person.hints.LastName.name}" sortable="false"
+                               headerText="#{bindings.Person.hints.LastName.label}" id="c2">
+                        <af:outputText value="#{row.LastName}" shortDesc="#{bindings.Person.hints.LastName.tooltip}"
+                                       id="ot2"/>
+                    </af:column>
+                </dvt:schedulingGantt>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</ui:composition>

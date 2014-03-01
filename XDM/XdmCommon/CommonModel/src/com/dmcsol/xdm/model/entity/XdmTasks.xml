@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XdmTasks"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XDM_TASKS"
+  AliasName="XdmTasks"
+  BindingStyle="OracleName"
+  RowClass="com.dmcsol.xdm.model.entity.XdmTasksImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="TaskId"
+    Precision="12"
+    Scale="0"
+    ColumnName="TASK_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="XDM_TASKS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="ElemKey"
+    Precision="10"
+    ColumnName="ELEM_KEY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProgId"
+    Precision="12"
+    Scale="0"
+    ColumnName="PROG_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="XDM_TASKS"/>
+  <Attribute
+    Name="StartDate"
+    IsNotNull="true"
+    ColumnName="START_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="XDM_TASKS"/>
+  <Attribute
+    Name="StartWhere"
+    Precision="250"
+    ColumnName="START_WHERE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Text"
+    Precision="4000"
+    ColumnName="TEXT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EndDate"
+    ColumnName="END_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="XDM_TASKS"/>
+  <Attribute
+    Name="EndWhere"
+    Precision="250"
+    ColumnName="END_WHERE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Pax"
+    Precision="5"
+    Scale="0"
+    ColumnName="PAX"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="XDM_TASKS"/>
+  <Attribute
+    Name="Remarks"
+    Precision="4000"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FlightNo"
+    Precision="250"
+    ColumnName="FLIGHT_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PersId"
+    Precision="12"
+    Scale="0"
+    ColumnName="PERS_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="XDM_TASKS"/>
+  <Attribute
+    Name="CxlYn"
+    Precision="1"
+    ColumnName="CXL_YN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XDM_TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="XdmElements"
+    Association="com.dmcsol.xdm.model.assoc.XdmElemTaskFkAssoc"
+    AssociationEnd="com.dmcsol.xdm.model.assoc.XdmElemTaskFkAssoc.XdmElements"
+    AssociationOtherEnd="com.dmcsol.xdm.model.assoc.XdmElemTaskFkAssoc.XdmTasks"
+    Type="com.dmcsol.xdm.common.framework.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="XdmPersons"
+    Association="com.dmcsol.xdm.model.assoc.XdmPersTaskFkAssoc"
+    AssociationEnd="com.dmcsol.xdm.model.assoc.XdmPersTaskFkAssoc.XdmPersons"
+    AssociationOtherEnd="com.dmcsol.xdm.model.assoc.XdmPersTaskFkAssoc.XdmTasks"
+    Type="com.dmcsol.xdm.common.framework.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="XdmProgrammes"
+    Association="com.dmcsol.xdm.model.assoc.XdmProgTaskFkAssoc"
+    AssociationEnd="com.dmcsol.xdm.model.assoc.XdmProgTaskFkAssoc.XdmProgrammes"
+    AssociationOtherEnd="com.dmcsol.xdm.model.assoc.XdmProgTaskFkAssoc.XdmTasks"
+    Type="com.dmcsol.xdm.common.framework.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="XdmTasksCxlChk">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XDM_TASKS_CXL_CHK"/>
+      <Attr Name="_checkCondition" Value="CXL_YN IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="XdmTasksPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XDM_TASKS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.model.entity.XdmTasks.TaskId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XdmElemTaskFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XDM_ELEMENTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XDM_ELEM_TASK_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.model.entity.XdmTasks.ElemKey"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XdmPersTaskFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XDM_PERSONS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XDM_PERS_TASK_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.model.entity.XdmTasks.PersId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XdmProgTaskFk">
+    <DesignTime>
+      <Attr Name="_isCascadeDelete" Value="true"/>
+      <Attr Name="_referencedKey" Value="XDM_PROGRAMMES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XDM_PROG_TASK_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.dmcsol.xdm.model.entity.XdmTasks.ProgId"/>
+    </AttrArray>
+  </Key>
+</Entity>

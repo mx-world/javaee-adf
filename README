@@ -1,1 +1,28 @@
 This repo will hold my adventures in the Java EE and Oracle ADF world.
+
+XDM 1.0
+This demo is based on the example used in the book:
+Oracle ADF Enterprise Application Development - Made Simple
+by Sten E. Vesterli, 2014 Packt Publishing
+The unique features of this book:
+- Describe real world ADF development requirements
+- How to organize your code structure:
+ -- Enterprise Common Workspace (WS) : containing 3 types of projects: (since the demo is tiny, this layer is omitted)
+   --- Common Code - hold common utilities, framework extension classes ...
+   --- Common Model - hold EOs, LOV VOs, common VOs used by apps, and AM
+   --- Common View - hold ADF task flow templates, page templates
+   --- Common Skin - hold custom ADF skin definitions for the enterprise
+ -- Application Common Workspace (WS) : will inherit all from Enterprise WS and add app-specific contents here
+    will contain the same project structure as Enterprise WS
+ -- Subsystem WS: one app could contain many subsystems; will inherit all from the App WS
+   --- <SubsystemX> Model - hold LOV VOs, VOs specific for this subsystem, and AM
+   --- <SubsystemX> View - hold ADF task flows(bounded) and page fragments
+ -- Master App WS: will use contents from all above (packaged as ADF libraries)
+   -- <App ID> - hold ADF unbounded task flows and pages, ADF unbounded task flows will be rendered in regions (either static
+      or dynamic)
+
+- How to create and use ADF Libraries
+- Tools used: 
+  JDev12c (12.1.2)
+  Subversion and Git for VCS
+- Database: Oracle XE

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.dmcsol.xdm.taskmgr.model.am.TaskMgrService">
+      <AppModuleConfig name="TaskMgrServiceLocal" jbo.project="com.dmcsol.xdm.taskmgr.model.TaskMgrModel" ApplicationName="com.dmcsol.xdm.taskmgr.model.am.TaskMgrService" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.dmcsol.xdm.taskmgr.model.am.TaskMgrService"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/xdmDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="TaskMgrServiceShared" jbo.project="com.dmcsol.xdm.taskmgr.model.TaskMgrModel" ApplicationName="com.dmcsol.xdm.taskmgr.model.am.TaskMgrService" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.dmcsol.xdm.taskmgr.model.am.TaskMgrService"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/xdmDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

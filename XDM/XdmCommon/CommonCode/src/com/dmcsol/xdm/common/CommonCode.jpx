@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CommonCode"
+  Version="12.1.2.66.68"
+  SeparateXMLFiles="true"
+  PackageName="com.dmcsol.xdm.common"
+  ExportIntfPackage="">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../../../CommonCode.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+  </DesignTime>
+</JboProject>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProgrammerManagerLOV"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="XdmPersons.INITIALS, 
+       XdmPersons.PERS_ID"
+  FromList="XDM_PERSONS XdmPersons"
+  Where="XdmPersons.PROGRAMME_MANAGER_YN='Y'"
+  OrderBy="XdmPersons.INITIALS"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="com.dmcsol.xdm.common.framework.ViewRowImpl"
+  ComponentClass="com.dmcsol.xdm.common.framework.ViewObjectImpl"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.dmcsol.xdm.model.view.lov.ProgrammerManagerLOV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="XdmPersons"
+    Entity="com.dmcsol.xdm.model.entity.XdmPersons"
+    ReadOnly="true"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="Initials"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Initials"
+    EntityUsage="XdmPersons"
+    AliasName="INITIALS"/>
+  <ViewAttribute
+    Name="PersId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="PersId"
+    EntityUsage="XdmPersons"
+    AliasName="PERS_ID"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.dmcsol.xdm.model.CommonModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

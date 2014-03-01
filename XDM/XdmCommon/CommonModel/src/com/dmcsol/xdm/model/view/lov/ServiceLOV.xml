@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ServiceLOV"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="XdmElements.DESCRIPTION, 
+       XdmElements.ELEM_KEY"
+  FromList="XDM_ELEMENTS XdmElements"
+  OrderBy="XdmElements.DESCRIPTION"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="com.dmcsol.xdm.common.framework.ViewRowImpl"
+  ComponentClass="com.dmcsol.xdm.common.framework.ViewObjectImpl"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.dmcsol.xdm.model.view.lov.ServiceLOV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="XdmElements"
+    Entity="com.dmcsol.xdm.model.entity.XdmElements"
+    ReadOnly="true"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="XdmElements"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="ElemKey"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ElemKey"
+    EntityUsage="XdmElements"
+    AliasName="ELEM_KEY"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.dmcsol.xdm.model.CommonModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

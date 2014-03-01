@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-overview-edit-flow">
+    <template-reference>
+      <document>/WEB-INF/xdm-task-flow-template.xml</document>
+      <id>xdm-task-flow-template</id>
+    </template-reference>
+    <default-activity>taskOverviewEdit</default-activity>
+    <view id="taskOverviewEdit">
+      <page>/taskOverviewEdit.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
