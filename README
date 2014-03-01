@@ -1,5 +1,23 @@
 This repo will hold my adventures in the Java EE and Oracle ADF world.
 
+XDM 1.1
+This version is to exercise the ADF skin.
+I have to use the standardalone ADF Skin Editor to create and update a custom skin.  The JDeve12c can create a new skin
+but cannot display the Property Inspector for modifying CSS properties.
+ADF skin is essentially a giant CSS file where a huge number of CSS selectors are defined for all the ADF components.
+FireFox plugin, FireBug is a good tool to identify which CSS selector is used for a particular component.
+Add the following Context Initialization Parameter to web.xml to enable full name of CSS selectors:
+  Name: org.apache.myfaces.trinidad.DISABLE_CONTENT_COMPRESSION
+  Value: true
+When done skinning work, remove this param or set its value to false(default).
+Steps to create and use custom skin:
+- Create a skin CSS file.
+- Optionally, provide images for your skin.
+- Optionally, create a resource bundle for your skin.
+- Package the skin in an ADF Library.
+- Import and use the skin in the application by changing skin-family and skin-version to your custom skin name and version
+  in the WEB-INF/trinidad-config.xml file.
+
 XDM 1.0
 This demo is based on the example used in the book:
 Oracle ADF Enterprise Application Development - Made Simple
