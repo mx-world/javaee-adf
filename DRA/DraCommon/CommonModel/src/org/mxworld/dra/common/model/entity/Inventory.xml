@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Inventory"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="inventory"
+  AliasName="Inventory"
+  BindingStyle="JDBC"
+  RowClass="org.mxworld.dra.common.framework.EntityImpl">
+  <Attribute
+    Name="InventoryId"
+    ColumnName="inventory_id"
+    SQLType="STRUCT"
+    Type="java.lang.String"
+    ColumnType="MEDIUMINT"
+    TableName="inventory"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="FilmId"
+    IsNotNull="true"
+    ColumnName="film_id"
+    SQLType="SMALLINT"
+    Type="java.lang.Integer"
+    ColumnType="SMALLINT"
+    TableName="inventory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StoreId"
+    IsNotNull="true"
+    ColumnName="store_id"
+    SQLType="TINYINT"
+    Type="java.lang.Integer"
+    ColumnType="TINYINT"
+    TableName="inventory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdate"
+    IsNotNull="true"
+    ColumnName="last_update"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="inventory"/>
+  <AccessorAttribute
+    Name="Film"
+    Association="org.mxworld.dra.common.model.assoc.FkInventoryFilmAssoc"
+    AssociationEnd="org.mxworld.dra.common.model.assoc.FkInventoryFilmAssoc.Film"
+    AssociationOtherEnd="org.mxworld.dra.common.model.assoc.FkInventoryFilmAssoc.Inventory1"
+    Type="org.mxworld.dra.common.framework.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="Primary1"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRIMARY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.common.model.entity.Inventory.InventoryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkInventoryFilm">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PRIMARY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="fk_inventory_film"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.common.model.entity.Inventory.FilmId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkInventoryStore">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PRIMARY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="fk_inventory_store"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.common.model.entity.Inventory.StoreId"/>
+    </AttrArray>
+  </Key>
+</Entity>

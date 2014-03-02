@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/WEB-INF/dra-pf-template.jsf" id="pt1">
+        <f:facet name="fragmentContent">
+            <af:panelFormLayout id="pfl1">
+                <f:facet name="footer">
+                    <af:button text="Customer Lookup" id="b1" action="executeQuery"/>
+                </f:facet>
+                <af:inputText label="Customer No" id="it1" value="#{pageFlowScope.custId}"/>
+                <af:inputText label="First Name" id="it2" value="#{pageFlowScope.fName}"/>
+                <af:inputText label="Last Name" id="it3" value="#{pageFlowScope.lName}"/>
+                <af:inputText label="Email" id="it4" value="#{pageFlowScope.pEmail}"/>
+            </af:panelFormLayout>
+        </f:facet>
+    </af:pageTemplate>
+</ui:composition>

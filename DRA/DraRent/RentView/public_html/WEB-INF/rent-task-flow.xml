@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="rent-task-flow">
+    <template-reference>
+      <document>/WEB-INF/dra-tf-template.xml</document>
+      <id>dra-tf-template</id>
+    </template-reference>
+    <default-activity>rent</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>RentalBean</managed-bean-name>
+      <managed-bean-class>org.mxworld.dra.rent.view.beans.Rental</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="rent">
+      <page>/rent.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="showRentalsPageDef"
+                Package="org.mxworld.dra.returndvd.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustomerSearchResult" RangeSize="25" DataControl="ReturnServiceDataControl"
+              id="CustomerSearchResultIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="RentalUnreturned" RangeSize="25" DataControl="ReturnServiceDataControl"
+              id="RentalUnreturnedIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CustomerSearchResultIterator" id="CustomerId">
+      <AttrNames>
+        <Item Value="CustomerId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerSearchResultIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerSearchResultIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerSearchResultIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CustomerSearchResultIterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CustomerSearchResultIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="CustomerSearchResultIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CustomerSearchResultIterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <tree IterBinding="RentalUnreturnedIterator" id="RentalUnreturned">
+      <nodeDefinition DefName="org.mxworld.dra.returndvd.model.view.RentalVO" Name="RentalUnreturned0">
+        <AttrNames>
+          <Item Value="RentalDate"/>
+          <Item Value="InventoryId"/>
+          <Item Value="CustomerId"/>
+          <Item Value="StaffId"/>
+          <Item Value="LastUpdate"/>
+          <Item Value="Title"/>
+          <Item Value="ReleaseYear"/>
+          <Item Value="Rating"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="ReturnServiceDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

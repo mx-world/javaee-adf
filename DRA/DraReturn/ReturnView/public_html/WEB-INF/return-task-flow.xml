@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="return-task-flow">
+    <default-activity>findCustomer</default-activity>
+    <managed-bean id="__7">
+      <managed-bean-name>ReturnBean</managed-bean-name>
+      <managed-bean-class>org.mxworld.dra.returndvd.view.beans.ReturnBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="findCustomer">
+      <page>/findCustomer.jsff</page>
+    </view>
+    <view id="showRentals">
+      <page>/showRentals.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>showResult</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>findCustomer</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>executeQuery</from-outcome>
+        <to-activity-id>ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>showResult</from-outcome>
+        <to-activity-id>showRentals</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>showRentals</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>newSearch</from-outcome>
+        <to-activity-id>findCustomer</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

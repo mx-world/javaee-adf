@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="org.mxworld.dra.rent.model.am.RentService">
+      <AppModuleConfig name="RentServiceLocal" ApplicationName="org.mxworld.dra.rent.model.am.RentService" DeployPlatform="LOCAL" jbo.project="org.mxworld.dra.rent.model.RentModel">
+         <Database jbo.sql92.JdbcDriverClass="com.mysql.jdbc.Driver" jbo.TypeMapEntries="Java" jbo.SQLBuilder="SQL92"/>
+         <Security AppModuleJndiName="org.mxworld.dra.rent.model.am.RentService"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/SakilaDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="RentServiceShared" ApplicationName="org.mxworld.dra.rent.model.am.RentService" DeployPlatform="LOCAL" jbo.project="org.mxworld.dra.rent.model.RentModel">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.sql92.JdbcDriverClass="com.mysql.jdbc.Driver" jbo.TypeMapEntries="Java" jbo.SQLBuilder="SQL92"/>
+         <Security AppModuleJndiName="org.mxworld.dra.rent.model.am.RentService"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/SakilaDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

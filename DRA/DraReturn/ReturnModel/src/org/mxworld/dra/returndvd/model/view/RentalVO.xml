@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RentalVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="Rental.rental_id, 
+       Rental.rental_date, 
+       Rental.inventory_id, 
+       Rental.customer_id, 
+       Rental.return_date, 
+       Rental.staff_id, 
+       Rental.last_update, 
+       Film.title, 
+       Film.film_id, 
+       Film.release_year, 
+       Film.rating"
+  FromList="rental Rental
+INNER JOIN inventory Inventory ON (Rental.inventory_id = Inventory.inventory_id)
+INNER JOIN film Film ON (Inventory.film_id = Film.film_id)"
+  OrderBy="Rental.rental_date"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  RowClass="org.mxworld.dra.returndvd.model.view.RentalVORowImpl"
+  ComponentClass="org.mxworld.dra.common.framework.ViewObjectImpl"
+  PageIterMode="Full"
+  RowInterface="org.mxworld.dra.returndvd.model.view.common.RentalVORow"
+  ClientRowProxyName="org.mxworld.dra.returndvd.model.view.client.RentalVORowClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.dra.returndvd.model.view.RentalVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Rental"
+    Entity="org.mxworld.dra.common.model.entity.Rental"/>
+  <EntityUsage
+    Name="Inventory"
+    Entity="org.mxworld.dra.common.model.entity.Inventory"
+    Association="org.mxworld.dra.common.model.assoc.FkRentalInventoryAssoc"
+    AssociationEnd="org.mxworld.dra.common.model.assoc.FkRentalInventoryAssoc.Inventory"
+    SourceUsage="org.mxworld.dra.returndvd.model.view.RentalVO.Rental"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.dra.common.model.entity.Rental.InventoryId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.dra.common.model.entity.Inventory.InventoryId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Film"
+    Entity="org.mxworld.dra.common.model.entity.Film"
+    Association="org.mxworld.dra.common.model.assoc.FkInventoryFilmAssoc"
+    AssociationEnd="org.mxworld.dra.common.model.assoc.FkInventoryFilmAssoc.Film"
+    SourceUsage="org.mxworld.dra.returndvd.model.view.RentalVO.Inventory"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.dra.common.model.entity.Inventory.FilmId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.dra.common.model.entity.Film.FilmId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="RentalId"
+    PrecisionRule="true"
+    EntityAttrName="RentalId"
+    EntityUsage="Rental"
+    AliasName="rental_id"/>
+  <ViewAttribute
+    Name="RentalDate"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RentalDate"
+    EntityUsage="Rental"
+    AliasName="rental_date"/>
+  <ViewAttribute
+    Name="InventoryId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="InventoryId"
+    EntityUsage="Rental"
+    AliasName="inventory_id"/>
+  <ViewAttribute
+    Name="CustomerId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CustomerId"
+    EntityUsage="Rental"
+    AliasName="customer_id"/>
+  <ViewAttribute
+    Name="ReturnDate"
+    PrecisionRule="true"
+    EntityAttrName="ReturnDate"
+    EntityUsage="Rental"
+    AliasName="return_date"/>
+  <ViewAttribute
+    Name="StaffId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="StaffId"
+    EntityUsage="Rental"
+    AliasName="staff_id"/>
+  <ViewAttribute
+    Name="LastUpdate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdate"
+    EntityUsage="Rental"
+    AliasName="last_update"/>
+  <ViewAttribute
+    Name="Title"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Title"
+    EntityUsage="Film"
+    AliasName="title"/>
+  <ViewAttribute
+    Name="FilmId"
+    PrecisionRule="true"
+    EntityAttrName="FilmId"
+    EntityUsage="Film"
+    AliasName="film_id"/>
+  <ViewAttribute
+    Name="ReleaseYear"
+    PrecisionRule="true"
+    EntityAttrName="ReleaseYear"
+    EntityUsage="Film"
+    AliasName="release_year"/>
+  <ViewAttribute
+    Name="Rating"
+    PrecisionRule="true"
+    EntityAttrName="Rating"
+    EntityUsage="Film"
+    AliasName="rating"/>
+  <ViewCriteria
+    Name="UnreturnedCriteria"
+    ViewObjectName="org.mxworld.dra.returndvd.model.view.RentalVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="RentalVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ReturnDate"
+        ViewAttribute="ReturnDate"
+        Operator="ISBLANK"
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="RentalId"/>
+  </AttrArray>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="registerReturn"
+      MethodName="registerReturn">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientRowInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.dra.returndvd.model.ReturnModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

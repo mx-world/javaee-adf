@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="return_task_flow_return_task_flow_ExecuteWithParamsPageDef"
+                Package="org.mxworld.dra.returndvd.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="CustomerSearchResult" RangeSize="25" DataControl="ReturnServiceDataControl"
+              id="CustomerSearchResultIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CustomerSearchResultIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="custId" NDValue="#{pageFlowScope.custId}" NDType="java.lang.String"/>
+      <NamedData NDName="fName" NDValue="#{pageFlowScope.fName}" NDType="java.lang.String"/>
+      <NamedData NDName="lName" NDValue="#{pageFlowScope.lName}" NDType="java.lang.String"/>
+      <NamedData NDName="pEmail" NDValue="#{pageFlowScope.pEmail}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

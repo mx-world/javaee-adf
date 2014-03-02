@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/WEB-INF/dra-pf-template.jsf" id="pt1">
+        <f:facet name="fragmentContent">
+            <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="AFStretchWidth">
+                <af:panelFormLayout id="pfl1">
+                    <af:inputText value="#{bindings.CustomerId.inputValue}" label="#{bindings.CustomerId.hints.label}"
+                                  required="#{bindings.CustomerId.hints.mandatory}"
+                                  columns="#{bindings.CustomerId.hints.displayWidth}"
+                                  maximumLength="#{bindings.CustomerId.hints.precision}"
+                                  shortDesc="#{bindings.CustomerId.hints.tooltip}" id="it1">
+                        <f:validator binding="#{bindings.CustomerId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CustomerId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                                  required="#{bindings.FirstName.hints.mandatory}"
+                                  columns="#{bindings.FirstName.hints.displayWidth}"
+                                  maximumLength="#{bindings.FirstName.hints.precision}"
+                                  shortDesc="#{bindings.FirstName.hints.tooltip}" id="it2">
+                        <f:validator binding="#{bindings.FirstName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                                  required="#{bindings.LastName.hints.mandatory}"
+                                  columns="#{bindings.LastName.hints.displayWidth}"
+                                  maximumLength="#{bindings.LastName.hints.precision}"
+                                  shortDesc="#{bindings.LastName.hints.tooltip}" id="it3">
+                        <f:validator binding="#{bindings.LastName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                                  required="#{bindings.Email.hints.mandatory}"
+                                  columns="#{bindings.Email.hints.displayWidth}"
+                                  maximumLength="#{bindings.Email.hints.precision}"
+                                  shortDesc="#{bindings.Email.hints.tooltip}" id="it4">
+                        <f:validator binding="#{bindings.Email.validator}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout layout="horizontal" id="pgl2">
+                            <af:button actionListener="#{bindings.First.execute}" text="First"
+                                       disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"/>
+                            <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                       disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+                            <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                       disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"/>
+                            <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                       disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"/>
+                            <af:button text="New Search" id="b6" action="newSearch"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+                <af:table value="#{bindings.RentalUnreturned.collectionModel}" var="row"
+                          rows="#{bindings.RentalUnreturned.rangeSize}"
+                          emptyText="#{bindings.RentalUnreturned.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" fetchSize="#{bindings.RentalUnreturned.rangeSize}" id="t1"
+                          styleClass="AFStretchWidth" columnStretching="column:c6" rowSelection="single"
+                          binding="#{backingBeanScope.ReturnBean.filmRentalTable}">
+                    <af:column sortProperty="#{bindings.RentalUnreturned.hints.Title.name}" sortable="true"
+                               headerText="#{bindings.RentalUnreturned.hints.Title.label}" id="c6">
+                        <af:inputText value="#{row.bindings.Title.inputValue}"
+                                      label="#{bindings.RentalUnreturned.hints.Title.label}"
+                                      required="#{bindings.RentalUnreturned.hints.Title.mandatory}"
+                                      columns="#{bindings.RentalUnreturned.hints.Title.displayWidth}"
+                                      maximumLength="#{bindings.RentalUnreturned.hints.Title.precision}"
+                                      shortDesc="#{bindings.RentalUnreturned.hints.Title.tooltip}" id="it8">
+                            <f:validator binding="#{row.bindings.Title.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RentalUnreturned.hints.ReleaseYear.name}" sortable="true"
+                               headerText="#{bindings.RentalUnreturned.hints.ReleaseYear.label}" id="c7">
+                        <af:inputText value="#{row.bindings.ReleaseYear.inputValue}"
+                                      label="#{bindings.RentalUnreturned.hints.ReleaseYear.label}"
+                                      required="#{bindings.RentalUnreturned.hints.ReleaseYear.mandatory}"
+                                      columns="#{bindings.RentalUnreturned.hints.ReleaseYear.displayWidth}"
+                                      maximumLength="#{bindings.RentalUnreturned.hints.ReleaseYear.precision}"
+                                      shortDesc="#{bindings.RentalUnreturned.hints.ReleaseYear.tooltip}" id="it9">
+                            <f:validator binding="#{row.bindings.ReleaseYear.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.RentalUnreturned.hints.ReleaseYear.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RentalUnreturned.hints.Rating.name}" sortable="true"
+                               headerText="#{bindings.RentalUnreturned.hints.Rating.label}" id="c8">
+                        <af:inputText value="#{row.bindings.Rating.inputValue}"
+                                      label="#{bindings.RentalUnreturned.hints.Rating.label}"
+                                      required="#{bindings.RentalUnreturned.hints.Rating.mandatory}"
+                                      columns="#{bindings.RentalUnreturned.hints.Rating.displayWidth}"
+                                      maximumLength="#{bindings.RentalUnreturned.hints.Rating.precision}"
+                                      shortDesc="#{bindings.RentalUnreturned.hints.Rating.tooltip}" id="it10">
+                            <f:validator binding="#{row.bindings.Rating.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RentalUnreturned.hints.RentalDate.name}" sortable="true"
+                               headerText="#{bindings.RentalUnreturned.hints.RentalDate.label}" id="c1">
+                        <af:inputDate value="#{row.bindings.RentalDate.inputValue}"
+                                      label="#{bindings.RentalUnreturned.hints.RentalDate.label}"
+                                      required="#{bindings.RentalUnreturned.hints.RentalDate.mandatory}"
+                                      columns="#{bindings.RentalUnreturned.hints.RentalDate.displayWidth}"
+                                      shortDesc="#{bindings.RentalUnreturned.hints.RentalDate.tooltip}" id="id1">
+                            <f:validator binding="#{row.bindings.RentalDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.RentalUnreturned.hints.RentalDate.format}"/>
+                        </af:inputDate>
+                    </af:column>
+                    <af:column id="c2" headerText="Return">
+                        <af:button text="Return" id="b5" action="#{backingBeanScope.ReturnBean.returnDvd}"/>
+                    </af:column>
+                </af:table>
+            </af:panelGroupLayout>
+        </f:facet>
+    </af:pageTemplate>
+</ui:composition>

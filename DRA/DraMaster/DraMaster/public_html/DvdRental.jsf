@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="DVS Rental Application" id="d1">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/WEB-INF/dra-page-template.jsf" id="pt1">
+                <f:facet name="pageContent">
+                    <af:panelTabbed id="pt2">
+                        <af:showDetailItem text="Rental" id="sdi1">
+                            <af:region value="#{bindings.renttaskflow1.regionModel}" id="r1"/>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Return" id="sdi2">
+                            <af:region value="#{bindings.returntaskflow1.regionModel}" id="r2"/>
+                        </af:showDetailItem>
+                    </af:panelTabbed>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

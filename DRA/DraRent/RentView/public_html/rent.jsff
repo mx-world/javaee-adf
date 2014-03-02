@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/WEB-INF/dra-pf-template.jsf" id="pt1">
+        <f:facet name="fragmentContent">
+            <af:panelFormLayout id="pfl1">
+                <f:facet name="footer">
+                    <af:button text="Register Rental" id="b1" action="#{backingBeanScope.RentalBean.rent}"/>
+                </f:facet>
+                <af:inputText label="Customer ID" id="it1" binding="#{backingBeanScope.RentalBean.customer}"/>
+                <af:inputText label="Inventory ID" id="it2" binding="#{backingBeanScope.RentalBean.inventory}"/>
+            </af:panelFormLayout>
+        </f:facet>
+    </af:pageTemplate>
+</ui:composition>

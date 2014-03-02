@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="org.mxworld.dra.rent.view" ClientType="Generic">
+  <pageMap>
+    <page path="/rent.jsff" usageId="org_mxworld_dra_rent_view_rentPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="org_mxworld_dra_rent_view_rentPageDef" path="org.mxworld.dra.rent.view.pageDefs.rentPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="RentServiceDataControl" Package="org.mxworld.dra.rent.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="RentServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

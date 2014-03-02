@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Film"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="film"
+  AliasName="Film"
+  BindingStyle="JDBC"
+  RowClass="org.mxworld.dra.common.framework.EntityImpl">
+  <Attribute
+    Name="FilmId"
+    ColumnName="film_id"
+    SQLType="SMALLINT"
+    Type="java.lang.Integer"
+    ColumnType="SMALLINT"
+    TableName="film"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Title"
+    IsNotNull="true"
+    Precision="255"
+    ColumnName="title"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    ColumnName="description"
+    SQLType="STRUCT"
+    Type="java.lang.String"
+    ColumnType="TEXT"
+    TableName="film"/>
+  <Attribute
+    Name="ReleaseYear"
+    ColumnName="release_year"
+    SQLType="STRUCT"
+    Type="java.lang.Integer"
+    ColumnType="YEAR"
+    TableName="film"/>
+  <Attribute
+    Name="LanguageId"
+    IsNotNull="true"
+    ColumnName="language_id"
+    SQLType="TINYINT"
+    Type="java.lang.Integer"
+    ColumnType="TINYINT"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OriginalLanguageId"
+    ColumnName="original_language_id"
+    SQLType="TINYINT"
+    Type="java.lang.Integer"
+    ColumnType="TINYINT"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RentalDuration"
+    IsNotNull="true"
+    ColumnName="rental_duration"
+    SQLType="TINYINT"
+    Type="java.lang.Integer"
+    ColumnType="TINYINT"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RentalRate"
+    IsNotNull="true"
+    ColumnName="rental_rate"
+    SQLType="DECIMAL"
+    Type="java.math.BigDecimal"
+    ColumnType="DECIMAL"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Length"
+    ColumnName="length"
+    SQLType="SMALLINT"
+    Type="java.lang.Integer"
+    ColumnType="SMALLINT"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReplacementCost"
+    IsNotNull="true"
+    ColumnName="replacement_cost"
+    SQLType="DECIMAL"
+    Type="java.math.BigDecimal"
+    ColumnType="DECIMAL"
+    TableName="film">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Rating"
+    ColumnName="rating"
+    SQLType="STRUCT"
+    Type="java.lang.String"
+    ColumnType="ENUM"
+    TableName="film"/>
+  <Attribute
+    Name="LastUpdate"
+    IsNotNull="true"
+    ColumnName="last_update"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="film"/>
+  <Key
+    Name="Primary1"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRIMARY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.common.model.entity.Film.FilmId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkFilmLanguage">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PRIMARY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="fk_film_language"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.common.model.entity.Film.LanguageId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkFilmLanguageOriginal">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PRIMARY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="fk_film_language_original"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.common.model.entity.Film.OriginalLanguageId"/>
+    </AttrArray>
+  </Key>
+</Entity>

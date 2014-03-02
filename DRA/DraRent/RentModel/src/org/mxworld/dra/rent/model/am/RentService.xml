@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RentService"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  ComponentClass="org.mxworld.dra.common.framework.ApplicationModuleImpl"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.dra.rent.model.am.RentService_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="RentalVO"
+    ViewObjectName="org.mxworld.dra.rent.model.view.RentalVO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.dra.rent.model.RentModelBundle"/>
+  </ResourceBundle>
+</AppModule>

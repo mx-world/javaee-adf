@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="org.mxworld.dra" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/DvdRental.jsf" usageId="org_mxworld_dra_DvdRentalPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="org_mxworld_dra_DvdRentalPageDef" path="org.mxworld.dra.pageDefs.DvdRentalPageDef"/>
+  </pageDefinitionUsages>
+</Application>

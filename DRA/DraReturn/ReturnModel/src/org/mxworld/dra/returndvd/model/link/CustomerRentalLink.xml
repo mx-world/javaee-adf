@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerRentalLink"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.dra.returndvd.model.link.CustomerRentalLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="CustomerVO"
+    Cardinality="1"
+    Source="true"
+    Owner="org.mxworld.dra.returndvd.model.view.CustomerVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="CustomerVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.returndvd.model.view.CustomerVO.CustomerId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="RentalVO"
+    Cardinality="-1"
+    Owner="org.mxworld.dra.returndvd.model.view.RentalVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="RentalVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.dra.returndvd.model.view.RentalVO.CustomerId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.dra.returndvd.model.ReturnModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

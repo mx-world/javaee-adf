@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageTemplateDefs xmlns="http://xmlns.oracle.com/adf/faces/rich/pagetemplate">
+  <pagetemplate-jsp-ui-def>/WEB-INF/dra-page-template.jsf</pagetemplate-jsp-ui-def>
+  <pagetemplate-jsp-ui-def>/WEB-INF/dra-pf-template.jsf</pagetemplate-jsp-ui-def>
+</pageTemplateDefs>

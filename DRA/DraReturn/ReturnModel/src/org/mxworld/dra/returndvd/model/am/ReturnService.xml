@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReturnService"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  ComponentClass="org.mxworld.dra.common.framework.ApplicationModuleImpl"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.dra.returndvd.model.am.ReturnService_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="CustomerSearchResult"
+    ViewObjectName="org.mxworld.dra.returndvd.model.view.CustomerVO">
+    <ViewCriteriaUsage
+      Name="CustomerVOCriteria"
+      FullName="org.mxworld.dra.returndvd.model.view.CustomerVO.CustomerVOCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="RentalUnreturned"
+    ViewObjectName="org.mxworld.dra.returndvd.model.view.RentalVO">
+    <ViewCriteriaUsage
+      Name="UnreturnedCriteria"
+      FullName="org.mxworld.dra.returndvd.model.view.RentalVO.UnreturnedCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="RentalVO"
+    ViewObjectName="org.mxworld.dra.returndvd.model.view.RentalVO"/>
+  <ViewLinkUsage
+    Name="CustomerRentalLink1"
+    ViewLinkObjectName="org.mxworld.dra.returndvd.model.link.CustomerRentalLink"
+    SrcViewUsageName="org.mxworld.dra.returndvd.model.am.ReturnService.CustomerSearchResult"
+    DstViewUsageName="org.mxworld.dra.returndvd.model.am.ReturnService.RentalUnreturned"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.dra.returndvd.model.ReturnModelBundle"/>
+  </ResourceBundle>
+</AppModule>
