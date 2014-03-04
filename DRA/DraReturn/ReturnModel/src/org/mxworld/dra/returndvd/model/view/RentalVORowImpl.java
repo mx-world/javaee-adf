@@ -12,6 +12,8 @@ import org.mxworld.dra.returndvd.model.view.common.RentalVORow;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class RentalVORowImpl extends ViewRowImpl implements RentalVORow {
+    private static final String RETURNED_STYLING = "text-decoration:line-through;";
+
     public static final int ENTITY_RENTAL = 0;
     public static final int ENTITY_INVENTORY = 1;
     public static final int ENTITY_FILM = 2;
@@ -30,9 +32,9 @@ public class RentalVORowImpl extends ViewRowImpl implements RentalVORow {
         Title,
         FilmId,
         ReleaseYear,
-        Rating;
-        static AttributesEnum[] vals = null;
-        ;
+        Rating,
+        TextFormat;
+        static AttributesEnum[] vals = null; ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -55,6 +57,7 @@ public class RentalVORowImpl extends ViewRowImpl implements RentalVORow {
         }
     }
 
+
     public static final int RENTALID = AttributesEnum.RentalId.index();
     public static final int RENTALDATE = AttributesEnum.RentalDate.index();
     public static final int INVENTORYID = AttributesEnum.InventoryId.index();
@@ -66,6 +69,7 @@ public class RentalVORowImpl extends ViewRowImpl implements RentalVORow {
     public static final int FILMID = AttributesEnum.FilmId.index();
     public static final int RELEASEYEAR = AttributesEnum.ReleaseYear.index();
     public static final int RATING = AttributesEnum.Rating.index();
+    public static final int TEXTFORMAT = AttributesEnum.TextFormat.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -274,6 +278,22 @@ public class RentalVORowImpl extends ViewRowImpl implements RentalVORow {
     }
 
     // Custom method called by ADF BC API code
+
+    /**
+     * Gets the attribute value for the calculated attribute TextFormat.
+     * @return the TextFormat
+     */
+    public String getTextFormat() {
+        //return (String) getAttributeInternal(TEXTFORMAT);
+
+        String retval = null;
+        if (getReturnDate() != null) {
+            retval = RETURNED_STYLING;
+        }
+        System.out.println("retval = " + retval);
+        return retval;
+    }
+
     public String registerReturn() {
         Timestamp now = new Timestamp(System.currentTimeMillis());
         //setAttribute(RETURNDATE, now);

@@ -2,6 +2,9 @@ package org.mxworld.dra.rent.view.beans;
 
 import java.sql.Timestamp;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
@@ -35,6 +38,16 @@ public class Rental {
         rentalVO.createAndInitRow(attrib);
         OperationBinding ob = bc.getOperationBinding("Commit");
         ob.execute();
+        
+        // Display an informational message
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        String msg = "Your rental has been successfully registered: Customer No = " + 
+                     customer.getValue() + ", Inventory ID = " + inventory.getValue();
+        FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, "");
+        ctx.addMessage(ctx.getViewRoot().getId(), fm);
+        customer.setValue(null);
+        inventory.setValue(null);
+        
         return null;
     }
 

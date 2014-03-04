@@ -53,7 +53,7 @@
                           emptyText="#{bindings.RentalUnreturned.viewable ? 'No data to display.' : 'Access Denied.'}"
                           rowBandingInterval="0" fetchSize="#{bindings.RentalUnreturned.rangeSize}" id="t1"
                           styleClass="AFStretchWidth" columnStretching="column:c6" rowSelection="single"
-                          binding="#{backingBeanScope.ReturnBean.filmRentalTable}">
+                          binding="#{backingBeanScope.ReturnBean.filmRentalTable}" partialTriggers="ReturnButton">
                     <af:column sortProperty="#{bindings.RentalUnreturned.hints.Title.name}" sortable="true"
                                headerText="#{bindings.RentalUnreturned.hints.Title.label}" id="c6">
                         <af:inputText value="#{row.bindings.Title.inputValue}"
@@ -61,7 +61,8 @@
                                       required="#{bindings.RentalUnreturned.hints.Title.mandatory}"
                                       columns="#{bindings.RentalUnreturned.hints.Title.displayWidth}"
                                       maximumLength="#{bindings.RentalUnreturned.hints.Title.precision}"
-                                      shortDesc="#{bindings.RentalUnreturned.hints.Title.tooltip}" id="it8">
+                                      shortDesc="#{bindings.RentalUnreturned.hints.Title.tooltip}" id="it8"
+                                      contentStyle="#{row.bindings.TextFormat.inputValue}">
                             <f:validator binding="#{row.bindings.Title.validator}"/>
                         </af:inputText>
                     </af:column>
@@ -72,7 +73,8 @@
                                       required="#{bindings.RentalUnreturned.hints.ReleaseYear.mandatory}"
                                       columns="#{bindings.RentalUnreturned.hints.ReleaseYear.displayWidth}"
                                       maximumLength="#{bindings.RentalUnreturned.hints.ReleaseYear.precision}"
-                                      shortDesc="#{bindings.RentalUnreturned.hints.ReleaseYear.tooltip}" id="it9">
+                                      shortDesc="#{bindings.RentalUnreturned.hints.ReleaseYear.tooltip}" id="it9"
+                                      contentStyle="#{row.bindings.TextFormat.inputValue}">
                             <f:validator binding="#{row.bindings.ReleaseYear.validator}"/>
                             <af:convertNumber groupingUsed="false"
                                               pattern="#{bindings.RentalUnreturned.hints.ReleaseYear.format}"/>
@@ -85,7 +87,8 @@
                                       required="#{bindings.RentalUnreturned.hints.Rating.mandatory}"
                                       columns="#{bindings.RentalUnreturned.hints.Rating.displayWidth}"
                                       maximumLength="#{bindings.RentalUnreturned.hints.Rating.precision}"
-                                      shortDesc="#{bindings.RentalUnreturned.hints.Rating.tooltip}" id="it10">
+                                      shortDesc="#{bindings.RentalUnreturned.hints.Rating.tooltip}" id="it10"
+                                      contentStyle="#{row.bindings.TextFormat.inputValue}">
                             <f:validator binding="#{row.bindings.Rating.validator}"/>
                         </af:inputText>
                     </af:column>
@@ -95,13 +98,15 @@
                                       label="#{bindings.RentalUnreturned.hints.RentalDate.label}"
                                       required="#{bindings.RentalUnreturned.hints.RentalDate.mandatory}"
                                       columns="#{bindings.RentalUnreturned.hints.RentalDate.displayWidth}"
-                                      shortDesc="#{bindings.RentalUnreturned.hints.RentalDate.tooltip}" id="id1">
+                                      shortDesc="#{bindings.RentalUnreturned.hints.RentalDate.tooltip}" id="id1"
+                                      contentStyle="#{row.bindings.TextFormat.inputValue}">
                             <f:validator binding="#{row.bindings.RentalDate.validator}"/>
                             <af:convertDateTime pattern="#{bindings.RentalUnreturned.hints.RentalDate.format}"/>
                         </af:inputDate>
                     </af:column>
                     <af:column id="c2" headerText="Return">
-                        <af:button text="Return" id="b5" action="#{backingBeanScope.ReturnBean.returnDvd}"/>
+                        <af:button text="Return" id="ReturnButton" action="#{backingBeanScope.ReturnBean.returnDvd}"
+                                   disabled="#{!empty row.bindings.ReturnDate.inputValue}"/>
                     </af:column>
                 </af:table>
             </af:panelGroupLayout>

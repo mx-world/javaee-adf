@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
              SeparateXMLFiles="false" Package="org.mxworld.dra.rent.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
   <pageMap>
     <page path="/rent.jsff" usageId="org_mxworld_dra_rent_view_rentPageDef"/>
+    <page path="/testpages/testRent.jsf" usageId="org_mxworld_dra_rent_view_testRentPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="org_mxworld_dra_rent_view_rentPageDef" path="org.mxworld.dra.rent.view.pageDefs.rentPageDef"/>
+    <page id="org_mxworld_dra_rent_view_testRentPageDef" path="testpages.testRentPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="RentServiceDataControl" Package="org.mxworld.dra.rent.model.am"

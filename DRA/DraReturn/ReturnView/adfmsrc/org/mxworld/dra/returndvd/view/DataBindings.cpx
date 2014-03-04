@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
              SeparateXMLFiles="false" Package="org.mxworld.dra.returndvd.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
   <pageMap>
     <page path="/WEB-INF/return-task-flow.xml#return-task-flow@ExecuteWithParams"
           usageId="org_mxworld_dra_returndvd_view_return_task_flow_return_task_flow_ExecuteWithParamsPageDef"/>
     <page path="/showRentals.jsff" usageId="org_mxworld_dra_returndvd_view_showRentalsPageDef"/>
+    <page path="/testpages/testReturn.jsf" usageId="org_mxworld_dra_returndvd_view_testReturnPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="org_mxworld_dra_returndvd_view_return_task_flow_return_task_flow_ExecuteWithParamsPageDef"
           path="org.mxworld.dra.returndvd.view.pageDefs.return_task_flow_return_task_flow_ExecuteWithParamsPageDef"/>
     <page id="org_mxworld_dra_returndvd_view_showRentalsPageDef"
           path="org.mxworld.dra.returndvd.view.pageDefs.showRentalsPageDef"/>
+    <page id="org_mxworld_dra_returndvd_view_testReturnPageDef" path="testpages.testReturnPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="ReturnServiceDataControl" Package="org.mxworld.dra.returndvd.model.am"

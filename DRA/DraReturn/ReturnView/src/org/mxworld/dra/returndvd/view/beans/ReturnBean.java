@@ -3,6 +3,9 @@ package org.mxworld.dra.returndvd.view.beans;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
@@ -39,6 +42,12 @@ public class ReturnBean {
         r.registerReturn();
         OperationBinding ob = bc.getOperationBinding("Commit");
         ob.execute();
+        
+        // Display an informational message
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        String msg = "Your rental has been successfully returned.";
+        FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, "");
+        ctx.addMessage(ctx.getViewRoot().getId(), fm);
         return null;
     }
 

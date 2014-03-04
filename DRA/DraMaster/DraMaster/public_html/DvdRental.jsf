@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-    <af:document title="DVS Rental Application" id="d1">
+    <af:document title="DVD Rental Application" id="d1">
         <af:form id="f1">
             <af:pageTemplate viewId="/WEB-INF/dra-page-template.jsf" id="pt1">
                 <f:facet name="pageContent">

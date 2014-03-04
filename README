@@ -1,5 +1,19 @@
 This repo will hold my adventures in the Java EE and Oracle ADF world.
 
+DRA 1.1
+This version added 2 more enhancements:
+- In DraRent project, added a comfirmation popup when Register button is clicked and then the two input text fields
+  are cleared for new entry.
+- In DraReturn project, added code to strike through the returned record and disable the Return button 
+  after the Return button is clicked:
+  #{row.bindings.TextFormat.inputValue} for ContentStyle attribute of the table column inputtext fields: TextFormat
+   is a transient attribute added to RentalVO to hold the CSS property value to implement the strike-through formatting.
+  #{!empty row.bindings.ReturnDate.inputValue} for Diabled attribute of the Return button
+- In both cases above, PPR is essential: button click is the trigger, the textfields and the table are the targets 
+  using PartialTriggers attribute to register the button events.
+- In order to use the TextFormat and ReturnDate attributes in the above ELs, need to modify the RentalUnreturned
+  tree binding and move those 2 attributes to the Display Attributes side on the bindings tab
+
 DRA 1.0
 DVD Rental Application is built using the code structure as XDM.
 Origin: Developing Web Applications with Oracle ADF Essentials by Sten E. Vesterli, 2013 Packt Publishing

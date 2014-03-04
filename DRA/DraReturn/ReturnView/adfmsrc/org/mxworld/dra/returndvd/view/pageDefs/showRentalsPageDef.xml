@@ -45,6 +45,8 @@
           <Item Value="Title"/>
           <Item Value="ReleaseYear"/>
           <Item Value="Rating"/>
+          <Item Value="TextFormat"/>
+          <Item Value="ReturnDate"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

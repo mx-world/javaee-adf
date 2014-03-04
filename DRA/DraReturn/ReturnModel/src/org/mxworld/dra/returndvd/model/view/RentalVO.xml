@@ -154,6 +154,16 @@ INNER JOIN film Film ON (Inventory.film_id = Film.film_id)"
     EntityAttrName="Rating"
     EntityUsage="Film"
     AliasName="rating"/>
+  <ViewAttribute
+    Name="TextFormat"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="UnreturnedCriteria"
     ViewObjectName="org.mxworld.dra.returndvd.model.view.RentalVO"
