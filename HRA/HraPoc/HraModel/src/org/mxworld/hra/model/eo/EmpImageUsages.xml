@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmpImageUsages"
+  Version="12.1.2.66.68"
+  Extends="org.mxworld.hra.model.eo.ImageUsages"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="IMAGE_USAGES"
+  AliasName="EmpImageUsages"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="UsageType"
+    IsNotNull="true"
+    DiscrColumn="true"
+    DefaultValue="E"
+    Precision="1"
+    ColumnName="USAGE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IMAGE_USAGES">
+    <DesignTime>
+      <Attr Name="_OverrideAttr" Value="true"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Employees"
+    Association="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc.Employees"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc.EmpImageUsages"
+    Type="org.mxworld.hra.model.eo.EmployeesImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="fk_EmpImageUsages">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_EMP_IMAGE_USAGES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.ImageUsages.AssociatedId"/>
+    </AttrArray>
+  </Key>
+</Entity>

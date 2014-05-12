@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">empSearch</property>
+      <property
+         name="page">/empSearch.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>empSearch&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">198.79883</property>
+      <property
+         name="x">193.68262</property>
+   </View>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule3">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">57.29883</property>
+      <property
+         name="x">416.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="WildcardControlFlowRule3"
+      to="View2">
+      <property
+         name="fromOutcome">search</property>
+      <property
+         name="sdm:polyPoints">L50,380.0,57.448242,234.68262,198.44824,R50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">empEdit</property>
+      <property
+         name="page">/empEdit.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>empEdit&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">201.24707</property>
+      <property
+         name="x">679.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View2"
+      to="View5">
+      <property
+         name="fromOutcome">edit</property>
+      <property
+         name="sdm:polyPoints">R54,236.0806,201.94824,638.0,200.89648,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Departments"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DEPARTMENTS"
+  AliasName="Departments"
+  BindingStyle="OracleName"
+  RowClass="org.mxworld.hra.common.framework.HraEntityImpl">
+  <Attribute
+    Name="DepartmentId"
+    IsNotNull="true"
+    Precision="4"
+    Scale="0"
+    ColumnName="DEPARTMENT_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="DEPARTMENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPARTMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Departments.DepartmentName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="80"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ManagerId"
+    Precision="6"
+    Scale="0"
+    ColumnName="MANAGER_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"/>
+  <Attribute
+    Name="LocationId"
+    Precision="4"
+    Scale="0"
+    ColumnName="LOCATION_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"/>
+  <AccessorAttribute
+    Name="Employees"
+    Association="org.mxworld.hra.model.assoc.DeptMgrFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.DeptMgrFkAssoc.Employees"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.DeptMgrFkAssoc.Departments"
+    Type="org.mxworld.hra.common.framework.HraEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Employees1"
+    Association="org.mxworld.hra.model.assoc.EmpDeptFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpDeptFkAssoc.Employees1"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpDeptFkAssoc.Departments1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="JobHistory"
+    Association="org.mxworld.hra.model.assoc.JhistDeptFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.JhistDeptFkAssoc.JobHistory"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.JhistDeptFkAssoc.Departments"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="DeptIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPT_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Departments.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptNameNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPT_NAME_NN"/>
+      <Attr Name="_checkCondition" Value='"DEPARTMENT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="DeptLocFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LOC_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_LOC_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Departments.LocationId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptMgrFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_MGR_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Departments.ManagerId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.hra.model.HraModelBundle"/>
+  </ResourceBundle>
+</Entity>

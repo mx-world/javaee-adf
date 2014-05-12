@@ -1,5 +1,17 @@
 This repo will hold my adventures in the Java EE and Oracle ADF world.
 
+HRA 1.0
+The Human Resource Application is a ADF practice project from the book "Oracle JDeveloper 11g Handbook: A Guide to Oracle Fusion Web Development" by Duncan Mills et al, 2009 Oracle Press.
+Outstanding features:
+- Difficulty Level: medium to advanced
+- Database: Oracle XE 11g
+- JDeveloper 12c
+- One DVT component: Hierarchy Viewer
+- Bind a Rich Text Editor component to a database CLOB column
+- Multiple LOVs
+- Multiple popup components: one of them is very complicated to have a dynamic region to render a bounded train-type task flow
+- Lots of custom Java code at the AM Impl level, View Object Impl level, View Object Row Impl ...
+
 DRA 1.1
 This version added 2 more enhancements:
 - In DraRent project, added a comfirmation popup when Register button is clicked and then the two input text fields
@@ -8,7 +20,7 @@ This version added 2 more enhancements:
   after the Return button is clicked:
   #{row.bindings.TextFormat.inputValue} for ContentStyle attribute of the table column inputtext fields: TextFormat
    is a transient attribute added to RentalVO to hold the CSS property value to implement the strike-through formatting.
-  #{!empty row.bindings.ReturnDate.inputValue} for Diabled attribute of the Return button
+  #{!empty row.bindings.ReturnDate.inputValue} for Disabled attribute of the Return button
 - In both cases above, PPR is essential: button click is the trigger, the textfields and the table are the targets 
   using PartialTriggers attribute to register the button events.
 - In order to use the TextFormat and ReturnDate attributes in the above ELs, need to modify the RentalUnreturned

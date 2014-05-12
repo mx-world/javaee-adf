@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">searchUI</property>
+      <property
+         name="page">/fragments/searchUI.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>searchUI&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">170.5459</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">269.0</property>
+   </View>
+   <ParentAction
+      id="ParentAction3">
+      <property
+         name="activityId">parentEdit</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>parentEdit&lt;/b>&lt;/p>&lt;p>Activity Type:  Parent Action&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">167.19531</property>
+      <property
+         name="x">639.0</property>
+   </ParentAction>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="ParentAction3">
+      <property
+         name="fromOutcome">edit</property>
+      <property
+         name="sdm:polyPoints">R50,310.0,170.19531,598.0,166.84473,L50</property>
+   </ControlFlowCase>
+</SDM>

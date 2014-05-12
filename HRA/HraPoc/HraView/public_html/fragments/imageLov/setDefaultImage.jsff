@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/WEB-INF/templates/hraTrainTemplate.jsf" id="pt1">
+        <f:facet name="trainContent">
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+                <af:outputFormatted value="Select the required picture for #{bindings.FirstName.inputValue} #{bindings.LastName.inputValue} and drag it onto the Default Picture target."
+                                    id="of1" styleUsage="instruction"/>
+                <af:spacer width="10" height="5" id="s1"/>
+                <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center" inlineStyle="height:260px;">
+                    <af:table value="#{bindings.AllEmpImages.collectionModel}" var="row"
+                              rows="#{bindings.AllEmpImages.rangeSize}"
+                              emptyText="#{bindings.AllEmpImages.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.AllEmpImages.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.AllEmpImages.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.AllEmpImages.rangeSize}" id="t1"
+                              horizontalGridVisible="false" verticalGridVisible="false"
+                              inlineStyle="width:60px; height:250px; border-width:0.0px;">
+                        <af:column id="c2" width="60">
+                            <af:image shortDesc="Available Image" id="availableImage"
+                                      source="#{row.Image}" inlineStyle="width:54px; height:54px;"/>
+                        </af:column>
+                        <af:dragSource actions="COPY" discriminant="empImagesModel"/>
+                    </af:table>
+                    <af:image source="/images/arrow.png" id="i1"/>
+                    <af:panelBox text="Drag Image Here" id="pb1" showDisclosure="false">
+                        <f:facet name="toolbar"/>
+                        <af:image id="i2" inlineStyle="width:180px; height:180.0px;"
+                                  source="#{pageFlowScope.defaultImageSelectionBean.selectedImage}"/>
+                        <af:dropTarget dropListener="#{pageFlowScope.defaultImageSelectionBean.dragAndDropHandler}">
+                            <af:dataFlavor flavorClass="org.apache.myfaces.trinidad.model.RowKeySet"
+                                           discriminant="empImagesModel"/>
+                        </af:dropTarget>
+                    </af:panelBox>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:attribute name="pageUse" value="Default Employee Image"/>
+        <f:attribute name="pageDescription"
+                     value="Use this page to define which of your images should be used as the default."/>
+    </af:pageTemplate>
+</ui:composition>

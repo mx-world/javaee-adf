@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="imageLov-flow">
+    <default-activity>addImage</default-activity>
+    <input-parameter-definition id="__1">
+      <name>currentEmpId</name>
+      <value>#{pageFlowScope.currentEmpId}</value>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__4">
+      <managed-bean-name>imageUploadBean</managed-bean-name>
+      <managed-bean-class>org.mxworld.hra.view.backing.ImageUploadBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+      <managed-bean-name>defaultImageSelectionBean</managed-bean-name>
+      <managed-bean-class>org.mxworld.hra.view.backing.DefaultImageSelectionBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="addImage">
+      <display-name>Upload a New Image</display-name>
+      <page>/fragments/imageLov/addImage.jsff</page>
+      <train-stop/>
+    </view>
+    <view id="setDefaultImage">
+      <display-name>Default Employee Image</display-name>
+      <page>/fragments/imageLov/setDefaultImage.jsff</page>
+      <train-stop/>
+    </view>
+    <task-flow-return id="lovDone">
+      <outcome>
+        <name>refresh</name>
+      </outcome>
+    </task-flow-return>
+    <train/>
+    <control-flow-rule id="__2">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>finish</from-outcome>
+        <to-activity-id>lovDone</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="editEmpPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EditEmp" RangeSize="25" DataControl="HraServiceDataControl" id="EditEmpIterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="EmpJobHistory" RangeSize="25" DataControl="HraServiceDataControl" id="EmpJobHistoryIterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="EmpBio" RangeSize="25" DataControl="HraServiceDataControl" id="EmpBioIterator"
+              ChangeEventPolicy="ppr"/>
+    <taskFlow id="dynamicRegion1" taskFlowId="${viewScope.empEditBean.dynamicTaskFlowId}" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="currentEmpId" value="#{bindings.EmployeeId.inputValue}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="EditEmpIterator" id="EmployeeId">
+      <AttrNames>
+        <Item Value="EmployeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="HireDate">
+      <AttrNames>
+        <Item Value="HireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="Salary">
+      <AttrNames>
+        <Item Value="Salary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="CommissionPct">
+      <AttrNames>
+        <Item Value="CommissionPct"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="Image">
+      <AttrNames>
+        <Item Value="Image"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="CreatedDate">
+      <AttrNames>
+        <Item Value="CreatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="ModifiedBy">
+      <AttrNames>
+        <Item Value="ModifiedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="ModifiedDate">
+      <AttrNames>
+        <Item Value="ModifiedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EditEmpIterator" StaticList="false" Uses="LOV_DepartmentId" id="DepartmentId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="EditEmpIterator" StaticList="false" Uses="LOV_JobId" id="JobId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="EditEmpIterator" StaticList="false" Uses="LOV_ManagerId" id="ManagerId"/>
+    <attributeValues IterBinding="EditEmpIterator" id="ComparableDepartmentId">
+      <AttrNames>
+        <Item Value="DepartmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="EmpJobHistoryIterator" id="EmpJobHistory">
+      <nodeDefinition DefName="org.mxworld.hra.model.vo.AllJobHistory" Name="EmpJobHistory0">
+        <AttrNames>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="JobTitle"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="EmpBioIterator" id="Biography">
+      <AttrNames>
+        <Item Value="Biography"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="EmpBioIterator" id="CreateBio" InstanceName="HraServiceDataControl.EmpBio"
+            DataControl="HraServiceDataControl" RequiresUpdateModel="true" Action="createRow"/>
+    <attributeValues IterBinding="EmpBioIterator" id="Locked">
+      <AttrNames>
+        <Item Value="Locked"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="ManagerFirstName">
+      <AttrNames>
+        <Item Value="ManagerFirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="ManagerLastName">
+      <AttrNames>
+        <Item Value="ManagerLastName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

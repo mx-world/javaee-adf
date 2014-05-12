@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="empEdit.jsf" id="d1">
+        <af:form id="f1" usesUpload="true">
+            <af:pageTemplate viewId="/WEB-INF/templates/hra-page-template.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="content">
+                    <af:panelSplitter id="ps1" splitterPosition="180" orientation="horizontal">
+                        <f:facet name="first">
+                            <af:panelGroupLayout id="pgl1" layout="vertical">
+                                <af:spacer width="10" height="10" id="s1"/>
+                                <af:link id="searchLink" text="Return to  Employee Search"
+                                         icon="#{resource['images:search.png']}" iconPosition="top"
+                                         partialSubmit="true" action="search">
+                                    <af:setPropertyListener from="#{'EMPLOYEE_SEARCH'}"
+                                                            to="#{uiState.searchScreenFocus}" type="action"/>
+                                </af:link>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="20" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:region value="#{bindings.editEmpflow1.regionModel}" id="r1"/>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

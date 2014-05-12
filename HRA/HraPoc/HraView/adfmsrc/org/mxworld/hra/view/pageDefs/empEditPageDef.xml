@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="empEditPageDef"
+                Package="org.mxworld.hra.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.hra_page_templatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <taskFlow id="editEmpflow1" taskFlowId="/WEB-INF/editEmp-flow.xml#editEmp-flow" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="empId" value="#{uiState.editEmpId}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

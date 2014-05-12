@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Human Resources Application" id="d1">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/WEB-INF/templates/hra-page-template.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="content">
+                    <af:panelSplitter id="ps1" splitterPosition="180" orientation="horizontal">
+                        <f:facet name="first">
+                            <af:panelGroupLayout id="pgl1" layout="vertical">
+                                <af:spacer width="10" height="10" id="s1"/>
+                                <af:link id="searchLink" text="Search for Employees"
+                                         icon="#{resource['images:search.png']}" iconPosition="top"
+                                         partialSubmit="true">
+                                    <af:setPropertyListener from="#{'EMPLOYEE_SEARCH'}"
+                                                            to="#{uiState.searchScreenFocus}" type="action"/>
+                                </af:link>
+                                <af:link id="orgLink" icon="#{resource['images:orgchart.png']}"
+                                         text="View by Department" iconPosition="top" partialSubmit="true">
+                                    <af:setPropertyListener from="#{'DEPARTMENT_TREE'}"
+                                                            to="#{uiState.searchScreenFocus}" type="action"/>
+                                </af:link>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="20" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                                       partialTriggers="::searchLink ::orgLink"/>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+                <f:attribute name="pageTitle" value="Employee Search"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepartmentsToEmployeesVL"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="org.mxworld.hra.model.assoc.EmpDeptFkAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.hra.model.vl.DepartmentsToEmployeesVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="AllDepartmentsWithManagers"
+    Cardinality="1"
+    Source="true"
+    Owner="org.mxworld.hra.model.vo.AllDepartmentsWithManagers">
+    <DesignTime>
+      <Attr Name="_finderName" Value="AllDepartmentsWithManagers"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.vo.AllDepartmentsWithManagers.DepartmentId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="EmployeesInDepartment"
+    Cardinality="-1"
+    Owner="org.mxworld.hra.model.vo.AllEmployees">
+    <DesignTime>
+      <Attr Name="_finderName" Value="EmployeesInDepartment"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.hra.model.HraModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

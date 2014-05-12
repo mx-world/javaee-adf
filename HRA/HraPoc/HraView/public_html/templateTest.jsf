@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="templateTest.jsf" id="d1">
+        <af:form id="f1" usesUpload="true">
+            <af:pageTemplate viewId="/WEB-INF/templates/hra-page-template.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="content">
+                    <af:region value="#{bindings.editEmpflow1.regionModel}" id="r1"/>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

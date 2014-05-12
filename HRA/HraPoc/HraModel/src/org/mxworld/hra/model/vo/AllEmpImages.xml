@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllEmpImages"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="EmpImageUsages.ASSOCIATED_ID, 
+       EmpImageUsages.DEFAULT_IMAGE, 
+       EmpImageUsages.IMAGE_ID, 
+       EmpImageUsages.USAGE_TYPE, 
+       Images.IMAGE, 
+       Images.IMAGE_ID AS IMAGE_ID1"
+  FromList="IMAGE_USAGES EmpImageUsages, IMAGES Images"
+  Where="EmpImageUsages.IMAGE_ID = Images.IMAGE_ID"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="org.mxworld.hra.model.vo.AllEmpImagesRowImpl"
+  ComponentClass="org.mxworld.hra.common.framework.HraViewObjectImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.hra.model.vo.AllEmpImages_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="EmpImageUsages"
+    Entity="org.mxworld.hra.model.eo.EmpImageUsages"/>
+  <EntityUsage
+    Name="Images"
+    Entity="org.mxworld.hra.model.eo.Images"
+    Association="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc.Images"
+    SourceUsage="org.mxworld.hra.model.vo.AllEmpImages.EmpImageUsages"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.hra.model.eo.ImageUsages.ImageId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Images.ImageId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="AssociatedId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AssociatedId"
+    EntityUsage="EmpImageUsages"
+    AliasName="ASSOCIATED_ID"/>
+  <ViewAttribute
+    Name="DefaultImage"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DefaultImage"
+    EntityUsage="EmpImageUsages"
+    AliasName="DEFAULT_IMAGE"/>
+  <ViewAttribute
+    Name="ImageId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ImageId"
+    EntityUsage="EmpImageUsages"
+    AliasName="IMAGE_ID"/>
+  <ViewAttribute
+    Name="UsageType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    DiscrColumn="true"
+    EntityAttrName="UsageType"
+    EntityUsage="EmpImageUsages"
+    AliasName="USAGE_TYPE"
+    PrimaryKey="true"/>
+  <ViewAttribute
+    Name="Image"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Image"
+    EntityUsage="Images"
+    AliasName="IMAGE"/>
+  <ViewAttribute
+    Name="ImageId1"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="ImageId"
+    EntityUsage="Images"
+    AliasName="IMAGE_ID1"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="AssociatedId"/>
+    <Item Value="ImageId"/>
+    <Item Value="UsageType"/>
+    <Item Value="ImageId1"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.hra.model.HraModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

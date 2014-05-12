@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllDepartmentsWithManagers"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="Departments.DEPARTMENT_ID, 
+       Departments.DEPARTMENT_NAME, 
+       Departments.MANAGER_ID, 
+       Departments.LOCATION_ID, 
+       Managers.EMPLOYEE_ID, 
+       Managers.FIRST_NAME, 
+       Managers.LAST_NAME"
+  FromList="DEPARTMENTS Departments, EMPLOYEES Managers"
+  Where="Departments.MANAGER_ID = Managers.EMPLOYEE_ID(+)"
+  OrderBy="Departments.DEPARTMENT_NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="org.mxworld.hra.common.framework.HraViewRowImpl"
+  ComponentClass="org.mxworld.hra.common.framework.HraViewObjectImpl"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.hra.model.vo.AllDepartmentsWithManagers_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Departments"
+    Entity="org.mxworld.hra.model.eo.Departments"
+    ReadOnly="true"
+    DeleteParticipant="false"/>
+  <EntityUsage
+    Name="Managers"
+    Entity="org.mxworld.hra.model.eo.Employees"
+    Association="org.mxworld.hra.model.assoc.DeptMgrFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.DeptMgrFkAssoc.Employees"
+    SourceUsage="org.mxworld.hra.model.vo.AllDepartmentsWithManagers.Departments"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Departments.ManagerId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Employees.EmployeeId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_NAME"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="Departments"
+    AliasName="MANAGER_ID"/>
+  <ViewAttribute
+    Name="LocationId"
+    PrecisionRule="true"
+    EntityAttrName="LocationId"
+    EntityUsage="Departments"
+    AliasName="LOCATION_ID"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Managers"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Managers"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Managers"
+    AliasName="LAST_NAME"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="DepartmentId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="EmployeesInDepartment"
+    ViewLink="org.mxworld.hra.model.vl.DepartmentsToEmployeesVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.hra.model.HraModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

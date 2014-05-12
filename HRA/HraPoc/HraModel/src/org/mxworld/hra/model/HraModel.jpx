@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HraModel"
+  Version="12.1.2.66.68"
+  SeparateXMLFiles="true"
+  PackageName="org.mxworld.hra.model">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../../../HraModel.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="hr"/>
+    <Attr Name="_appModuleNames0" Value="org.mxworld.hra.model.am.HraService"/>
+  </DesignTime>
+  <Containee
+    Name="am"
+    PackageName="org.mxworld.hra.model.am"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="assoc"
+    PackageName="org.mxworld.hra.model.assoc"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="eo"
+    PackageName="org.mxworld.hra.model.eo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="vl"
+    PackageName="org.mxworld.hra.model.vl"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="lov"
+    PackageName="org.mxworld.hra.model.vo.lov"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="validation"
+    PackageName="org.mxworld.hra.model.vo.validation"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="vo"
+    PackageName="org.mxworld.hra.model.vo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <AppContainee
+    Name="CommonCode"
+    FullName="org.mxworld.hra.common.CommonCode"
+    ObjectType="JboProject">
+    <DesignTime>
+      <Attr Name="_SourceName" Value="adflibHraCommonCode.jar"/>
+    </DesignTime>
+  </AppContainee>
+</JboProject>

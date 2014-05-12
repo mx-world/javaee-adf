@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:panelFormLayout id="pfl2" labelWidth="115">
+            <f:facet name="footer"/>
+            <af:panelLabelAndMessage label="#{bindings.EmployeeId.hints.label}" id="plam1">
+                <af:outputText value="#{bindings.EmployeeId.inputValue}"
+                               shortDesc="#{bindings.EmployeeId.hints.tooltip}" id="ot1">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+                </af:outputText>
+            </af:panelLabelAndMessage>
+        </af:panelFormLayout>
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="6" labelWidth="115">
+            <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                          required="#{bindings.FirstName.hints.mandatory}"
+                          columns="30"
+                          maximumLength="#{bindings.FirstName.hints.precision}"
+                          shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1">
+                <f:validator binding="#{bindings.FirstName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                          required="#{bindings.LastName.hints.mandatory}"
+                          columns="30"
+                          maximumLength="#{bindings.LastName.hints.precision}"
+                          shortDesc="#{bindings.LastName.hints.tooltip}" id="it2">
+                <f:validator binding="#{bindings.LastName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                          required="#{bindings.Email.hints.mandatory}" columns="30"
+                          maximumLength="#{bindings.Email.hints.precision}" shortDesc="#{bindings.Email.hints.tooltip}"
+                          id="it3">
+                <f:validator binding="#{bindings.Email.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.PhoneNumber.inputValue}" label="#{bindings.PhoneNumber.hints.label}"
+                          required="#{bindings.PhoneNumber.hints.mandatory}"
+                          columns="30"
+                          maximumLength="#{bindings.PhoneNumber.hints.precision}"
+                          shortDesc="#{bindings.PhoneNumber.hints.tooltip}" id="it4">
+                <f:validator binding="#{bindings.PhoneNumber.validator}"/>
+            </af:inputText>
+            <af:panelLabelAndMessage id="plam10">
+                <af:image source="#{bindings.Image.inputValue}"
+                          shortDesc="Picture of #{bindings.FirstName.inputValue} #{bindings.LastName.inputValue}"
+                          id="i1"
+                          inlineStyle="border-style:inset; border-width:3px; border-color:rgb(181,231,255); width:180px; height:180px;"
+                          partialTriggers="imageLov"/>
+                <f:facet name="end">
+                    <af:link text="Manage Images" id="l1">
+                        <af:showPopupBehavior popupId="imageLov" triggerType="action"/>
+                    </af:link>
+                </f:facet>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage id="plam7"/>
+            <af:selectOneChoice value="#{bindings.DepartmentId.inputValue}" label="#{bindings.DepartmentId.label}"
+                                required="#{bindings.DepartmentId.hints.mandatory}"
+                                shortDesc="#{bindings.DepartmentId.hints.tooltip}" id="soc1" autoSubmit="true"
+                                contentStyle="width:193px;">
+                <f:selectItems value="#{bindings.DepartmentId.items}" id="si1"/>
+                <f:validator binding="#{bindings.DepartmentId.validator}"/>
+            </af:selectOneChoice>
+            <af:panelLabelAndMessage label="#{bindings.ManagerId.hints.label}" id="plam9" for="managerIdId">
+                <af:panelGroupLayout id="pgl5" layout="vertical">
+                    <af:inputComboboxListOfValues id="managerIdId"
+                                                  popupTitle="Search and Select: #{bindings.ManagerId.hints.label}"
+                                                  value="#{bindings.ManagerId.inputValue}"
+                                                  model="#{bindings.ManagerId.listOfValuesModel}"
+                                                  required="#{bindings.ManagerId.hints.mandatory}" columns="31"
+                                                  shortDesc="#{bindings.ManagerId.hints.tooltip}" autoSubmit="true"
+                                                  simple="true">
+                        <f:validator binding="#{bindings.ManagerId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.ManagerId.format}"/>
+                    </af:inputComboboxListOfValues>
+                    <af:outputText value="#{bindings.ManagerFirstName} #{bindings.ManagerLastName}" id="ot12"/>
+                </af:panelGroupLayout>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{bindings.JobId.label}" id="plam8" for="soc2">
+                <af:panelGroupLayout id="pgl4" layout="horizontal">
+                    <af:selectOneChoice value="#{bindings.JobId.inputValue}"
+                                        required="#{bindings.JobId.hints.mandatory}"
+                                        shortDesc="#{bindings.JobId.hints.tooltip}" id="soc2"
+                                        contentStyle="width:193px;" simple="true" clientComponent="true">
+                        <f:selectItems value="#{bindings.JobId.items}" id="si2"/>
+                        <f:validator binding="#{bindings.JobId.validator}"/>
+                    </af:selectOneChoice>
+                    <f:facet name="separator">
+                        <af:spacer width="4" height="10" id="s2"/>
+                    </f:facet>
+                    <af:outputText value="Past Jobs" id="ot11">
+                        <af:showPopupBehavior popupId="p1" triggerType="mouseHover" align="endBefore" alignId="soc2"/>
+                    </af:outputText>
+                </af:panelGroupLayout>
+            </af:panelLabelAndMessage>
+            <af:inputDate value="#{bindings.HireDate.inputValue}" label="#{bindings.HireDate.hints.label}"
+                          required="#{bindings.HireDate.hints.mandatory}"
+                          columns="#{bindings.HireDate.hints.displayWidth}"
+                          shortDesc="#{bindings.HireDate.hints.tooltip}" id="id1">
+                <f:validator binding="#{bindings.HireDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.HireDate.format}"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.Salary.inputValue}" label="#{bindings.Salary.hints.label}"
+                          required="#{bindings.Salary.hints.mandatory}" columns="15"
+                          maximumLength="#{bindings.Salary.hints.precision}"
+                          shortDesc="#{bindings.Salary.hints.tooltip}" id="it8">
+                <f:validator binding="#{bindings.Salary.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.Salary.format}" type="currency"
+                                  currencyCode="USD"/>
+            </af:inputText>
+            <af:panelLabelAndMessage label="#{bindings.CommissionPct.hints.label}" id="plam6"
+                                     partialTriggers="soc1">
+                <af:switcher defaultFacet="spinner" id="s1"
+                             facetName="#{empty bindings.CommissionPct.inputValue?'na':'spinner'}">
+                    <f:facet name="spinner">
+                        <af:inputNumberSpinbox value="#{bindings.CommissionPct.inputValue}"
+                                               required="#{bindings.CommissionPct.hints.mandatory}"
+                                               columns="15"
+                                               shortDesc="#{bindings.CommissionPct.hints.tooltip}" id="it9" minimum="0"
+                                               maximum="#{0 + bindings.CommissionPct.hints.MAX_ALLOWED_COMMISSION}"
+                                               stepSize="#{0 + bindings.CommissionPct.hints.STEP_SIZE}"
+                                               readOnly="#{bindings.ComparableDepartmentId.inputValue != 80}"
+                                               partialTriggers="soc1" simple="true">
+                            <af:convertNumber groupingUsed="false" type="percent"/>
+                        </af:inputNumberSpinbox>
+                    </f:facet>
+                    <f:facet name="na">
+                        <af:outputText value="N/A" id="ot7"/>
+                    </f:facet>
+                </af:switcher>
+            </af:panelLabelAndMessage>
+            <f:facet name="footer"/>
+        </af:panelFormLayout>
+        <af:panelBox text="Biography" id="pb1" inlineStyle="width:800px;">
+            <f:facet name="toolbar">
+                <af:toolbar id="t2">
+                    <af:button id="lockIcon"
+                               icon="#{(empty bindings.Locked.inputValue || bindings.Locked.inputValue ) ? '/images/locked.png': '/images/unlocked.png'}"
+                               shortDesc="#{(empty bindings.Locked.inputValue || bindings.Locked.inputValue ) ? 'Click to edit': 'Click to lock'}"
+                               action="#{viewScope.empEditBean.lockIcon_action}"/>
+                </af:toolbar>
+            </f:facet>
+            <af:richTextEditor value="#{bindings.Biography.inputValue}" simple="true"
+                               required="#{bindings.Biography.hints.mandatory}"
+                               columns="140"
+                               shortDesc="#{bindings.Biography.hints.tooltip}" id="it5" label="Label 1" rows="10"
+                               contentStyle="width:100%;" partialTriggers="lockIcon"
+                               readOnly="#{bindings.Locked.inputValue}"/>
+        </af:panelBox>
+        <af:panelHeader text="Audit Information" id="ph1" messageType="info">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelFormLayout id="pfl3" maxColumns="4" rows="1" labelWidth="115">
+                <f:facet name="footer"/>
+                <af:panelLabelAndMessage label="#{bindings.CreatedDate.hints.label}" id="plam3">
+                    <af:outputText value="#{bindings.CreatedDate.inputValue}"
+                                   shortDesc="#{bindings.CreatedDate.hints.tooltip}" id="ot4">
+                        <af:convertDateTime pattern="#{bindings.CreatedDate.format}"/>
+                    </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.CreatedBy.hints.label}" id="plam2">
+                    <af:outputText value="#{bindings.CreatedBy.inputValue}"
+                                   shortDesc="#{bindings.CreatedBy.hints.tooltip}" id="ot3"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.ModifiedDate.hints.label}" id="plam5">
+                    <af:outputText value="#{bindings.ModifiedDate.inputValue}"
+                                   shortDesc="#{bindings.ModifiedDate.hints.tooltip}" id="ot6">
+                        <af:convertDateTime pattern="#{bindings.ModifiedDate.format}"/>
+                    </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.ModifiedBy.hints.label}" id="plam4">
+                    <af:outputText value="#{bindings.ModifiedBy.inputValue}"
+                                   shortDesc="#{bindings.ModifiedBy.hints.tooltip}" id="ot5"/>
+                </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+        </af:panelHeader>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached">
+            <af:noteWindow id="nw1">
+                <af:table value="#{bindings.EmpJobHistory.collectionModel}" var="row"
+                          rows="#{bindings.EmpJobHistory.rangeSize}"
+                          emptyText="No job history."
+                          rowBandingInterval="0" fetchSize="#{bindings.EmpJobHistory.rangeSize}" id="t1">
+                    <af:column headerText="#{bindings.EmpJobHistory.hints.StartDate.label}" id="c1">
+                        <af:outputText value="#{row.StartDate}"
+                                       shortDesc="#{bindings.EmpJobHistory.hints.StartDate.tooltip}" id="ot2">
+                            <af:convertDateTime pattern="#{bindings.EmpJobHistory.hints.StartDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.EmpJobHistory.hints.EndDate.label}" id="c2">
+                        <af:outputText value="#{row.EndDate}"
+                                       shortDesc="#{bindings.EmpJobHistory.hints.EndDate.tooltip}" id="ot8">
+                            <af:convertDateTime pattern="#{bindings.EmpJobHistory.hints.EndDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.EmpJobHistory.hints.JobTitle.label}" id="c3">
+                        <af:outputText value="#{row.JobTitle}"
+                                       shortDesc="#{bindings.EmpJobHistory.hints.JobTitle.tooltip}" id="ot9"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.EmpJobHistory.hints.DepartmentName.label}" id="c4">
+                        <af:outputText value="#{row.DepartmentName}"
+                                       shortDesc="#{bindings.EmpJobHistory.hints.DepartmentName.tooltip}" id="ot10"/>
+                    </af:column>
+                </af:table>
+            </af:noteWindow>
+        </af:popup>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="imageLov" contentDelivery="lazyUncached">
+            <af:dialog id="d1" title="Manage Employee Images" titleIconSource="/images/user.png" type="none">
+                <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                           regionNavigationListener="#{viewScope.empEditBean.navigationListener}"/>
+                <f:facet name="buttonBar"/>
+            </af:dialog>
+            <af:setPropertyListener type="popupFetch" from="#{viewScope.empEditBean.imageTaskFlowId}"
+                                    to="#{viewScope.empEditBean.selectedTaskFlowId}"/>
+            <af:clientListener method="popupClosedListener" type="popupClosed"/>
+            <af:serverListener type="serverPopupClosed" method="#{viewScope.empEditBean.swapEmptyTaskFlow}"/>
+        </af:popup>
+        <af:resource type="javascript">
+       function popupClosedListener(event) { 
+          var source = event.getSource(); 
+          var popupId = source.getClientId(); 
+          var params = {};
+           params['popupId'] = popupId; 
+           var type = "serverPopupClosed"; 
+           var immediate = true;
+           AdfCustomEvent.queue(source, type, params, immediate); 
+       }
+     </af:resource>
+    </af:panelGroupLayout>
+</ui:composition>

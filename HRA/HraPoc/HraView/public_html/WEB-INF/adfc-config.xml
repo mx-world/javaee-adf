@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="empSearch">
+    <page>/empSearch.jsf</page>
+  </view>
+  <view id="empEdit">
+    <page>/empEdit.jsf</page>
+  </view>
+  <control-flow-rule id="__4">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__5">
+      <from-outcome>search</from-outcome>
+      <to-activity-id>empSearch</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id>empSearch</from-activity-id>
+    <control-flow-case id="__7">
+      <from-outcome>edit</from-outcome>
+      <to-activity-id>empEdit</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__1">
+    <managed-bean-name>searchScreenBean</managed-bean-name>
+    <managed-bean-class>org.mxworld.hra.view.backing.SearchScreenBean</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <managed-property id="__3">
+      <property-name>uiManager</property-name>
+      <property-class>org.mxworld.hra.view.UIManager</property-class>
+      <value>#{uiState}</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>uiState</managed-bean-name>
+    <managed-bean-class>org.mxworld.hra.view.UIManager</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

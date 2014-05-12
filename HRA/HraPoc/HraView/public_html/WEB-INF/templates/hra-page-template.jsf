@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>hra-page-template</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>content</afc:facet-name>
+            </afc:facet>
+            <afc:attribute>
+                <afc:attribute-name>pageTitle</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+                <afc:default-value>Human Resource Application</afc:default-value>
+            </afc:attribute>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelGridLayout id="pt_pgl1">
+        <af:gridRow height="50px" id="pt_gr2">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc2">
+                <!-- Header -->
+                <af:decorativeBox id="pt_db1" theme="medium">
+                    <f:facet name="center">
+                        <af:panelGroupLayout id="pt_pgl2" layout="horizontal">
+                            <af:image source="/images/tuhra.png" shortDesc="HRA 2.0" id="pt_i1"
+                                      inlineStyle="height:30px;"/>
+                            <af:spacer width="20" height="10" id="pt_s1"/>
+                            <af:outputText id="pt_ot1" value="#{attrs.pageTitle}"
+                                           inlineStyle="color:Navy; font-size:large;"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:decorativeBox>
+            </af:gridCell>
+        </af:gridRow>
+        <af:gridRow height="100%" id="pt_gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc1">
+                <af:panelSplitter orientation="vertical" positionedFromEnd="true" splitterPosition="30" id="pt_ps1">
+                    <f:facet name="first">
+                        <!-- Content -->
+                        <af:decorativeBox id="pt_db2" theme="light" topHeight="26px">
+                            <f:facet name="center">
+                                <af:facetRef facetName="content"/>
+                            </f:facet>
+                            <f:facet name="top">
+                                <af:panelStretchLayout endWidth="20" id="psl2">
+                                    <f:facet name="center">
+                                        <af:group id="pt_g1">
+                                            <af:popup childCreation="deferred" autoCancel="disabled" id="aboutPopup">
+                                                <af:dialog id="pt_d1" title="About HRA 2.0" type="ok"
+                                                           titleIconSource="/images/help.png">
+                                                    <af:panelGroupLayout id="pt_pgl4" halign="center" valign="middle"
+                                                                         layout="vertical">
+                                                        <af:outputText value="The Human Resources Application"
+                                                                       id="pt_ot2"/>
+                                                        <af:outputText value="Copyright &amp;copy; 2009, 2014"
+                                                                       id="pt_ot3" escape="false"/>
+                                                        <af:outputText value="Mingsheng Xie" id="pt_ot4"/>
+                                                    </af:panelGroupLayout>
+                                                    <f:facet name="buttonBar"/>
+                                                </af:dialog>
+                                            </af:popup>
+                                            <af:menuBar id="pt_mb1">
+                                                <af:menu text="Action" id="pt_m2">
+                                                    <af:commandMenuItem actionListener="#{bindings.Commit.execute}"
+                                                                        text="Save" id="pt_cmi2"/>
+                                                </af:menu>
+                                                <af:menu text="menu 1" id="pt_m1" textAndAccessKey="&amp;Help">
+                                                    <af:commandMenuItem text="About" id="pt_cmi1"
+                                                                        textAndAccessKey="&amp;About">
+                                                        <af:showPopupBehavior popupId="aboutPopup"
+                                                                              triggerType="action"/>
+                                                    </af:commandMenuItem>
+                                                </af:menu>
+                                            </af:menuBar>
+                                        </af:group>
+                                    </f:facet>
+                                    <f:facet name="end">
+                                        <af:statusIndicator id="pt_si1"/>
+                                    </f:facet>
+                                </af:panelStretchLayout>
+                            </f:facet>
+                        </af:decorativeBox>
+                    </f:facet>
+                    <f:facet name="second">
+                        <!-- Footer -->
+                        <af:panelGroupLayout id="pt_pgl3" layout="horizontal" halign="end">
+                            <af:panelGroupLayout id="pt_pgl5" layout="vertical">
+                                <af:spacer width="230" height="8" id="pt_s2"/>
+                                <af:outputFormatted value="Copyright &amp;copy; HRA, Inc. All rights reserved."
+                                                    id="pt_of1" styleUsage="pageStamp"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelSplitter>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</af:pageTemplateDef>

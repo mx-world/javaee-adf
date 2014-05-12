@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="addImagePageDef"
+                Package="fragments.imageLov">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="createNewImageForEmployee" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createNewImageForEmployee" IsViewObjectMethod="false" DataControl="HraServiceDataControl"
+                  InstanceName="data.HraServiceDataControl.dataProvider">
+      <NamedData NDName="employeeId" NDType="java.lang.Integer"/>
+      <NamedData NDName="imageName" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

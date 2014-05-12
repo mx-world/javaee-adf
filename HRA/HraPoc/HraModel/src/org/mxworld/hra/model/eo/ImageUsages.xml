@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ImageUsages"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="IMAGE_USAGES"
+  AliasName="ImageUsages"
+  BindingStyle="OracleName"
+  RowClass="org.mxworld.hra.model.eo.ImageUsagesImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="ImageId"
+    IsNotNull="true"
+    Precision="6"
+    Scale="0"
+    ColumnName="IMAGE_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="IMAGE_USAGES"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="UsageType"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="USAGE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IMAGE_USAGES"
+    PrimaryKey="true"
+    DiscrColumn="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AssociatedId"
+    IsNotNull="true"
+    Precision="6"
+    Scale="0"
+    ColumnName="ASSOCIATED_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="IMAGE_USAGES"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="DefaultImage"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="DEFAULT_IMAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IMAGE_USAGES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Images"
+    Association="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc.Images"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc.ImageUsages"
+    Type="org.mxworld.hra.common.framework.HraEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="ImageUsagesPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="IMAGE_USAGES_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.ImageUsages.ImageId"/>
+      <Item Value="org.mxworld.hra.model.eo.ImageUsages.UsageType"/>
+      <Item Value="org.mxworld.hra.model.eo.ImageUsages.AssociatedId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ImageUsagesImagesFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="IMAGES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="IMAGE_USAGES_IMAGES_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.ImageUsages.ImageId"/>
+    </AttrArray>
+  </Key>
+</Entity>

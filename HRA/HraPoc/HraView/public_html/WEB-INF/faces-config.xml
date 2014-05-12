@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+  </application>
+  <converter>
+    <converter-for-class>oracle.jbo.domain.ClobDomain</converter-for-class>
+    <converter-class>org.mxworld.hra.view.converter.ClobConverter</converter-class>
+  </converter>
+</faces-config>

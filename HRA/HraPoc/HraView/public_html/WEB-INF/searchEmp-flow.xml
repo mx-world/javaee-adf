@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="searchEmp-flow">
+    <default-activity>searchUI</default-activity>
+    <view id="searchUI">
+      <page>/fragments/searchUI.jsff</page>
+    </view>
+    <parent-action id="parentEdit">
+      <parent-outcome>edit</parent-outcome>
+    </parent-action>
+    <control-flow-rule id="__1">
+      <from-activity-id>searchUI</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>parentEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

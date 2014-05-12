@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="deptTreePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DepartmentTree" RangeSize="25" DataControl="HraServiceDataControl" id="DepartmentTreeIterator"/>
+    <iterator Binds="DeptSelector" RangeSize="25" DataControl="HraServiceDataControl" id="DeptSelectorIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DepartmentTreeIterator" id="DepartmentTree">
+      <nodeDefinition DefName="org.mxworld.hra.model.vo.AllDepartmentsWithManagers" Name="DepartmentTree0">
+        <AttrNames>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="EmployeesInDepartment">
+            <Properties>
+              <CustomProperties>
+                <Property Name="hierarchyType" Value="children"/>
+              </CustomProperties>
+            </Properties>
+          </Item>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="org.mxworld.hra.model.vo.AllEmployees" Name="DepartmentTree1">
+        <AttrNames>
+          <Item Value="Email"/>
+          <Item Value="Image"/>
+          <Item Value="FirstName"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="JobTitle"/>
+          <Item Value="LastName"/>
+          <Item Value="EmployeeId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <navigationlist IterBinding="DeptSelectorIterator" ListOperMode="navigation" ListIter="DeptSelectorIterator"
+                    id="DeptSelector" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="DepartmentName"/>
+      </AttrNames>
+    </navigationlist>
+  </bindings>
+</pageDefinition>

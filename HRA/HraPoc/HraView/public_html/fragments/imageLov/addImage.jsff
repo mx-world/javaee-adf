@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/WEB-INF/templates/hraTrainTemplate.jsf" id="pt1">
+        <f:facet name="trainContent">
+            <af:panelFormLayout id="pfl1">
+                <f:facet name="footer"/>
+                <af:inputFile label="New image to upload" id="upload" autoSubmit="true"
+                              valueChangeListener="#{pageFlowScope.imageUploadBean.fileUploadedListener}"/>
+                <af:image shortDesc="Uploaded Image" id="i1" inlineStyle="width:180px; height:180px;"
+                          partialTriggers="upload"
+                          rendered="#{! empty pageFlowScope.imageUploadBean.uploadedImageName}"
+                          source="#{pageFlowScope.imageUploadBean.uploadedImageName}"/>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:attribute name="pageUse" value="Upload a New Image"/>
+        <f:attribute name="pageDescription"
+                     value="In this page you can upload a new image to the system for use with this user."/>
+    </af:pageTemplate>
+</ui:composition>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:panelStretchLayout>
+        <f:facet name="top">
+            <af:panelGroupLayout id="pgl7">
+                <af:selectOneChoice id="nl1" autoSubmit="true" value="#{bindings.DeptSelector.inputValue}"
+                                    label="Explore Department">
+                    <f:selectItems value="#{bindings.DeptSelector.items}" id="si1"/>
+                </af:selectOneChoice>
+                <af:panelHeader text="Details" partialTriggers="nl1" id="ph1"/>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="center">
+            <dvt:hierarchyViewer summary="Department-Employees Hierarchical View" id="hv1" var="node" value="#{bindings.DepartmentTree.treeModel}"
+                                 selectionListener="#{bindings.DepartmentTree.treeModel.makeCurrent}"
+                                 detailWindow="none" layout="tree" levelFetchSize="#{bindings.DepartmentTree.rangeSize}"
+                                 styleClass="AFStretchWidth" partialTriggers="::nl1">
+                <dvt:link linkType="orthogonalRounded" id="l1"/>
+                <dvt:node type="org.mxworld.hra.model.vo.AllDepartmentsWithManagers" width="233" height="100" id="n1">
+                    <f:facet name="zoom100">
+                        <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                             layout="vertical" id="pgl1" valign="top"
+                                             inlineStyle="background-color:#C0E4FD;border-color:#87CDFC;">
+                            <af:panelGroupLayout layout="vertical" id="pgl2" halign="center"
+                                                 styleClass="AFStretchWidth">
+                                <af:outputText value="#{node.DepartmentName}"
+                                               shortDesc="#{node.hints.DepartmentName.tooltip}"
+                                               styleClass="AFHVNodeTitleTextStyle" id="ot1"
+                                               inlineStyle="font-weight:bold;font-size:18px;color:#383A47;"/>
+                                <af:spacer width="10" height="4" id="s1"/>
+                                <af:separator id="s5"/>
+                                <af:spacer width="10" height="4" id="s6"/>
+                                <af:panelLabelAndMessage label="#{empty node.LastName?'No Manager Assigned':'Managed By'}"
+                                                         id="plam6"/>
+                                <af:panelGroupLayout layout="horizontal" id="pgl6">
+                                    <af:outputText value="#{node.FirstName}" id="ot11"/>
+                                    <af:outputText value="#{node.LastName}" id="ot2"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </dvt:node>
+                <dvt:node type="org.mxworld.hra.model.vo.AllEmployees" width="300" height="150" id="n2">
+                    <f:facet name="zoom100">
+                        <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                             inlineStyle="background-color:#C0E4FD;border-color:#87CDFC;"
+                                             layout="horizontal" valign="top" id="pgl3">
+                            <af:panelGroupLayout layout="vertical" halign="center" styleClass="AFStretchWidth"
+                                                 id="pgl4">
+                                <af:outputText value="Employee #{node.EmployeeId}" id="ot3"
+                                               inlineStyle="font-weight:bold;font-size:18px;color:#383A47;"/>
+                                <af:spacer width="10" height="4" id="s11"/>
+                                <af:separator id="s2"/>
+                                <af:spacer width="10" height="4" id="s16"/>
+                                <af:panelGroupLayout id="pgl17" layout="horizontal">
+                                    <af:panelFormLayout id="pfl1">
+                                        <af:panelLabelAndMessage label="Name" id="plam4">
+                                            <af:outputText value="#{node.FirstName}" id="ot10"/>
+                                            <af:outputText value="#{node.LastName}" id="ot7"/>
+                                        </af:panelLabelAndMessage>
+                                        <af:panelLabelAndMessage label="Email" id="plam2">
+                                            <af:outputText value="#{node.Email}" id="ot8"/>
+                                        </af:panelLabelAndMessage>
+                                        <af:panelLabelAndMessage label="Phone No." id="plam5">
+                                            <af:outputText value="#{node.PhoneNumber}" id="ot4"/>
+                                        </af:panelLabelAndMessage>
+                                        <af:panelLabelAndMessage label="Title" id="plam1">
+                                            <af:outputText value="#{node.JobTitle}" id="ot9"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:panelFormLayout>
+                                    <af:image source="#{node.Image}"
+                                              shortDesc="Picture of #{node.FirstName} #{node.LastName}" id="i1"
+                                              inlineStyle="width:144px;height:144px;"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </dvt:node>
+            </dvt:hierarchyViewer>
+        </f:facet>
+    </af:panelStretchLayout>
+</ui:composition>

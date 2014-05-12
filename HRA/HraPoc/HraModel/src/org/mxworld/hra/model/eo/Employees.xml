@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Employees"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="EMPLOYEES"
+  AliasName="Employees"
+  BindingStyle="OracleName"
+  RowClass="org.mxworld.hra.model.eo.EmployeesImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="SalaryValidatorAccessor"
+    ViewObjectName="org.mxworld.hra.model.vo.validation.SalaryValidator"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SalaryValidatorCriteria"
+      FullName="org.mxworld.hra.model.vo.validation.SalaryValidator.SalaryValidatorCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="JobIdToValidate">
+        <TransientExpression><![CDATA[JobId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <Attribute
+    Name="EmployeeId"
+    Precision="6"
+    Scale="0"
+    ColumnName="EMPLOYEE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEES"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.EmployeeId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="FirstName"
+    Precision="20"
+    ColumnName="FIRST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.FirstName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="LastName"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="LAST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.LastName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="60"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Email"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="EMAIL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.Email_LABEL"/>
+        <DISPLAYWIDTH
+          Value="100"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PhoneNumber"
+    Precision="20"
+    ColumnName="PHONE_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.PhoneNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HireDate"
+    IsNotNull="true"
+    ColumnName="HIRE_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEES">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.HireDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="JobId"
+    IsNotNull="true"
+    Precision="10"
+    ColumnName="JOB_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.JobId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Salary"
+    Precision="8"
+    Scale="2"
+    ColumnName="SALARY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEES"/>
+  <Attribute
+    Name="CommissionPct"
+    Precision="2"
+    Scale="2"
+    ColumnName="COMMISSION_PCT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEES">
+    <validation:RangeValidationBean
+      Name="CommissionPctRule0"
+      ResId="org.mxworld.hra.model.eo.Employees.CommissionPct_Rule_0"
+      OnAttribute="CommissionPct"
+      OperandType="LITERAL"
+      Inverse="false"
+      MinValue="0"
+      MaxValue="0.5">
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="commFId"><![CDATA[source.hints.CommissionPct.label]]></validation:Expression>
+        <validation:Expression
+          Name="maxPercent"><![CDATA[new java.lang.Float(source.hints.CommissionPct.MAX_ALLOWED_COMMISSION).value * 100]]></validation:Expression>
+      </validation:ResExpressions>
+    </validation:RangeValidationBean>
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="MAX_ALLOWED_COMMISSION"
+          Value="0.5"/>
+        <Property
+          Name="STEP_SIZE"
+          Value="0.01"/>
+      </CustomProperties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.CommissionPct_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ManagerId"
+    Precision="6"
+    Scale="0"
+    ColumnName="MANAGER_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEES">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.ManagerId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DepartmentId"
+    Precision="4"
+    Scale="0"
+    ColumnName="DEPARTMENT_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEES">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.DepartmentId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.CreatedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    IsNotNull="true"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEES"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.CreatedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="30"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.ModifiedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEES"
+    HistoryColumn="DateHistory">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="org.mxworld.hra.model.eo.Employees.ModifiedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="Employees"
+    Association="org.mxworld.hra.model.assoc.EmpManagerFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpManagerFkAssoc.Employees"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpManagerFkAssoc.ManagerIdEmployees"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="ManagerIdEmployees"
+    Association="org.mxworld.hra.model.assoc.EmpManagerFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpManagerFkAssoc.ManagerIdEmployees"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpManagerFkAssoc.Employees"
+    Type="org.mxworld.hra.common.framework.HraEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Departments"
+    Association="org.mxworld.hra.model.assoc.DeptMgrFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.DeptMgrFkAssoc.Departments"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.DeptMgrFkAssoc.Employees"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Departments1"
+    Association="org.mxworld.hra.model.assoc.EmpDeptFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpDeptFkAssoc.Departments1"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpDeptFkAssoc.Employees1"
+    Type="org.mxworld.hra.common.framework.HraEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Jobs"
+    Association="org.mxworld.hra.model.assoc.EmpJobFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpJobFkAssoc.Jobs"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpJobFkAssoc.Employees"
+    Type="org.mxworld.hra.common.framework.HraEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="JobHistory"
+    Association="org.mxworld.hra.model.assoc.JhistEmpFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.JhistEmpFkAssoc.JobHistory"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.JhistEmpFkAssoc.Employees"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Biographies"
+    Association="org.mxworld.hra.model.assoc.BiographiesEmployeesFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.BiographiesEmployeesFkAssoc.Biographies"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.BiographiesEmployeesFkAssoc.Employees"
+    Type="org.mxworld.hra.common.framework.HraEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmpImageUsages"
+    Association="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc.EmpImageUsages"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc.Employees"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="EmpEmailNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_EMAIL_NN"/>
+      <Attr Name="_checkCondition" Value='"EMAIL" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpEmailUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_EMAIL_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Employees.Email"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpEmpIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_EMP_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Employees.EmployeeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpHireDateNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_HIRE_DATE_NN"/>
+      <Attr Name="_checkCondition" Value='"HIRE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpJobNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_JOB_NN"/>
+      <Attr Name="_checkCondition" Value='"JOB_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpLastNameNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_LAST_NAME_NN"/>
+      <Attr Name="_checkCondition" Value='"LAST_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpSalaryMin">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_SALARY_MIN"/>
+      <Attr Name="_checkCondition" Value="salary > 0"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpDeptFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="DEPT_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_DEPT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Employees.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpJobFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="JOB_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_JOB_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Employees.JobId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpManagerFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_MANAGER_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Employees.ManagerId"/>
+    </AttrArray>
+  </Key>
+  <validation:CompareValidationBean
+    Name="EmployeesRule0"
+    ResId="org.mxworld.hra.model.eo.Employees_Rule_0"
+    OnAttribute="Salary"
+    OperandType="VO_USAGE"
+    Inverse="false"
+    CompareType="GREATERTHANEQUALTO"
+    ViewAccAttrName="MinSalary"
+    ViewAccName="SalaryValidatorAccessor">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Salary"/>
+      <validation:Item
+        Value="JobId"/>
+    </validation:OnAttributes>
+    <validation:ResExpressions>
+      <validation:Expression
+        Name="empSalary"><![CDATA[newValue.Salary]]></validation:Expression>
+      <validation:Expression
+        Name="minSalary"><![CDATA[SalaryValidatorAccessor.first().MinSalary]]></validation:Expression>
+      <validation:Expression
+        Name="jobDescription"><![CDATA[SalaryValidatorAccessor.first().JobTitle]]></validation:Expression>
+    </validation:ResExpressions>
+  </validation:CompareValidationBean>
+  <validation:CompareValidationBean
+    Name="EmployeesRule1"
+    ResId="org.mxworld.hra.model.eo.Employees_Rule_1"
+    OnAttribute="Salary"
+    OperandType="VO_USAGE"
+    Inverse="false"
+    CompareType="LESSTHANEQUALTO"
+    ViewAccAttrName="MaxSalary"
+    ViewAccName="SalaryValidatorAccessor">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Salary"/>
+      <validation:Item
+        Value="JobId"/>
+    </validation:OnAttributes>
+    <validation:ResExpressions>
+      <validation:Expression
+        Name="empSalary"><![CDATA[newValue.Salary]]></validation:Expression>
+      <validation:Expression
+        Name="maxSalary"><![CDATA[SalaryValidatorAccessor.first().MaxSalary]]></validation:Expression>
+      <validation:Expression
+        Name="jobDescription"><![CDATA[SalaryValidatorAccessor.first().JobTitle]]></validation:Expression>
+    </validation:ResExpressions>
+  </validation:CompareValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.hra.model.HraModelBundle"/>
+  </ResourceBundle>
+</Entity>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmpDeptFkAssoc"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Departments1"
+    Cardinality="1"
+    Source="true"
+    Owner="org.mxworld.hra.model.eo.Departments">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Departments1"/>
+      <Attr Name="_foreignKey" Value="org.mxworld.hra.model.eo.Departments.DeptIdPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Departments.DepartmentId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Employees1"
+    Cardinality="-1"
+    Owner="org.mxworld.hra.model.eo.Employees">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Employees1"/>
+      <Attr Name="_foreignKey" Value="org.mxworld.hra.model.eo.Employees.EmpDeptFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Employees.DepartmentId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

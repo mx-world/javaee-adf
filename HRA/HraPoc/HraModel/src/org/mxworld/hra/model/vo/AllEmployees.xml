@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllEmployees"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="org.mxworld.hra.model.vo.AllEmployeesRowImpl"
+  ComponentClass="org.mxworld.hra.model.vo.AllEmployeesImpl"
+  PageIterMode="Full"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false"
+  RowInterface="org.mxworld.hra.model.vo.common.AllEmployeesRow"
+  ClientRowProxyName="org.mxworld.hra.model.vo.client.AllEmployeesRowClient"
+  ComponentInterface="org.mxworld.hra.model.vo.common.AllEmployees"
+  ClientProxyName="org.mxworld.hra.model.vo.client.AllEmployeesClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="org.mxworld.hra.model.vo.AllEmployees_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="empId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
+  <ViewAccessor
+    Name="DeptLovAccessor"
+    ViewObjectName="org.mxworld.hra.model.vo.lov.DeptLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="JobsLovAccessor"
+    ViewObjectName="org.mxworld.hra.model.vo.lov.JobsLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="FilteredManagerLovAccessor"
+    ViewObjectName="org.mxworld.hra.model.vo.lov.FilteredManagerLov"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FilteredManagerLovCriteria"
+      FullName="org.mxworld.hra.model.vo.lov.FilteredManagerLov.FilteredManagerLovCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="CurrentDeptId">
+        <TransientExpression><![CDATA[DepartmentId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="CurrentEmpId">
+        <TransientExpression><![CDATA[EmployeeId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_DepartmentId"
+    ListVOName="DeptLovAccessor"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="LOV_DepartmentId_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_JobId"
+    ListVOName="JobsLovAccessor"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="LOV_JobId_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ManagerId"
+    ListVOName="FilteredManagerLovAccessor"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ManagerId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ManagerFirstName"/>
+      <Item Value="ManagerLastName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmployeeId"/>
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="Employees"
+    Entity="org.mxworld.hra.model.eo.Employees"/>
+  <EntityUsage
+    Name="Jobs"
+    Entity="org.mxworld.hra.model.eo.Jobs"
+    Association="org.mxworld.hra.model.assoc.EmpJobFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpJobFkAssoc.Jobs"
+    SourceUsage="org.mxworld.hra.model.vo.AllEmployees.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Employees.JobId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Jobs.JobId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Manager"
+    Entity="org.mxworld.hra.model.eo.Employees"
+    Association="org.mxworld.hra.model.assoc.EmpManagerFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpManagerFkAssoc.ManagerIdEmployees"
+    SourceUsage="org.mxworld.hra.model.vo.AllEmployees.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Employees.ManagerId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Employees.EmployeeId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="EmpImageUsages"
+    Entity="org.mxworld.hra.model.eo.EmpImageUsages"
+    Association="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.EmpImageUsagesAssoc.EmpImageUsages"
+    SourceUsage="org.mxworld.hra.model.vo.AllEmployees.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Employees.EmployeeId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.hra.model.eo.ImageUsages.AssociatedId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Images"
+    Entity="org.mxworld.hra.model.eo.Images"
+    Association="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc.Images"
+    SourceUsage="org.mxworld.hra.model.vo.AllEmployees.EmpImageUsages"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="org.mxworld.hra.model.eo.ImageUsages.ImageId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="org.mxworld.hra.model.eo.Images.ImageId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Employees"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Employees"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Employees"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="Email"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Email"
+    EntityUsage="Employees"
+    AliasName="EMAIL"/>
+  <ViewAttribute
+    Name="PhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="PhoneNumber"
+    EntityUsage="Employees"
+    AliasName="PHONE_NUMBER"/>
+  <ViewAttribute
+    Name="JobId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="Employees"
+    AliasName="JOB_ID"
+    LOVName="LOV_JobId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobsJobId"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="Jobs"
+    AliasName="JOB_ID1"/>
+  <ViewAttribute
+    Name="JobTitle"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobTitle"
+    EntityUsage="Jobs"
+    AliasName="JOB_TITLE"/>
+  <ViewAttribute
+    Name="CommissionPct"
+    PrecisionRule="true"
+    EntityAttrName="CommissionPct"
+    EntityUsage="Employees"
+    AliasName="COMMISSION_PCT"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="Employees"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="Employees"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Employees"
+    AliasName="DEPARTMENT_ID"
+    LOVName="LOV_DepartmentId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="HireDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="HireDate"
+    EntityUsage="Employees"
+    AliasName="HIRE_DATE"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="Employees"
+    AliasName="MANAGER_ID"
+    LOVName="LOV_ManagerId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ModifiedBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedBy"
+    EntityUsage="Employees"
+    AliasName="MODIFIED_BY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="Employees"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Salary"
+    PrecisionRule="true"
+    EntityAttrName="Salary"
+    EntityUsage="Employees"
+    AliasName="SALARY"/>
+  <ViewAttribute
+    Name="ManagerFirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Manager"
+    AliasName="FIRST_NAME1"/>
+  <ViewAttribute
+    Name="ManagerEmployeeId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Manager"
+    AliasName="EMPLOYEE_ID1"/>
+  <ViewAttribute
+    Name="ManagerLastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Manager"
+    AliasName="LAST_NAME1"/>
+  <ViewAttribute
+    Name="Image"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Image"
+    EntityUsage="Images"
+    AliasName="IMAGE"/>
+  <ViewAttribute
+    Name="ImageId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="ImageId"
+    EntityUsage="Images"
+    AliasName="IMAGE_ID"/>
+  <ViewAttribute
+    Name="DefaultImage"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DefaultImage"
+    EntityUsage="EmpImageUsages"
+    AliasName="DEFAULT_IMAGE"/>
+  <ViewAttribute
+    Name="ImageId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ImageId"
+    EntityUsage="EmpImageUsages"
+    AliasName="IMAGE_ID1"/>
+  <ViewAttribute
+    Name="UsageType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    DiscrColumn="true"
+    EntityAttrName="UsageType"
+    EntityUsage="EmpImageUsages"
+    AliasName="USAGE_TYPE"/>
+  <ViewAttribute
+    Name="AssociatedId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AssociatedId"
+    EntityUsage="EmpImageUsages"
+    AliasName="ASSOCIATED_ID"/>
+  <ViewCriteria
+    Name="EmpByIdCriteria"
+    ViewObjectName="org.mxworld.hra.model.vo.AllEmployees"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="AllEmployeesCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="EmployeeId"
+        ViewAttribute="EmployeeId"
+        Operator="="
+        Conjunction="AND"
+        Value=":empId"
+        GenerateIsNullClauseForBindVars="false"
+        ValidateBindVars="true"
+        IsBindVarValue="true"
+        Required="Required"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="EmployeeId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="AllJobHistory"
+    ViewLink="org.mxworld.hra.model.vl.EmpJobHistoryVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="EmpBio"
+    ViewLink="org.mxworld.hra.model.vl.EmpBioVL"
+    Type="oracle.jbo.Row"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="AllEmpImages"
+    ViewLink="org.mxworld.hra.model.vl.EmpImagesVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="queryEmployeeById"
+      MethodName="queryEmployeeById">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="id"
+        Type="java.lang.Integer"/>
+    </Method>
+  </ClientInterface>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="defineDefaultImage"
+      MethodName="defineDefaultImage">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="newDefaultImageId"
+        Type="java.lang.Integer"/>
+    </Method>
+  </ClientRowInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="org.mxworld.hra.model.HraModelBundle"/>
+  </ResourceBundle>
+  <DeclarativeWhereClause
+    Name="DeclarativeWhereClause">
+    <ViewCriteria
+      Name="AllEmployeesWhereCriteria"
+      ViewObjectName="org.mxworld.hra.model.vo.AllEmployees"
+      Conjunction="AND"
+      Mode="3">
+      <ViewCriteriaRow
+        Name="AllEmployeesWhereCriteria_row_0"
+        UpperColumns="1">
+        <ViewCriteriaItemCompound
+          ViewAttribute="DefaultImage">
+          <ViewCriteria
+            Name="AllEmployeesWhereCriteria_AllEmployeesWhereCriteria_row_0_DefaultImage_itemHolder"
+            ViewObjectName="org.mxworld.hra.model.vo.AllEmployees"
+            Conjunction="OR">
+            <ViewCriteriaRow
+              Name="AllEmployeesWhereCriteria_AllEmployeesWhereCriteria_row_0_DefaultImage_itemHolder_row_0"
+              Conjunction="AND">
+              <ViewCriteriaItem
+                Name="DefaultImage"
+                ViewAttribute="DefaultImage"
+                Operator="="
+                Conjunction="AND"
+                Value="Y"
+                UpperColumns="0"
+                GenerateIsNullClauseForBindVars="false"
+                Required="Required"/>
+            </ViewCriteriaRow>
+            <ViewCriteriaRow
+              Name="AllEmployeesWhereCriteria_AllEmployeesWhereCriteria_row_0_DefaultImage_itemHolder_row_1"
+              Conjunction="OR">
+              <ViewCriteriaItem
+                Name="AllEmployeesWhereCriteria_AllEmployeesWhereCriteria_row_0_DefaultImage_AllEmployeesWhereCriteria_AllEmployeesWhereCriteria_row_0_DefaultImage_itemHolder_AllEmployeesWhereCriteria_AllEmployeesWhereCriteria_row_0_DefaultImage_itemHolder_row_1_DefaultImage"
+                ViewAttribute="DefaultImage"
+                Operator="ISBLANK"
+                Conjunction="OR"
+                UpperColumns="0"
+                GenerateIsNullClauseForBindVars="false"
+                Required="Required"/>
+            </ViewCriteriaRow>
+          </ViewCriteria>
+        </ViewCriteriaItemCompound>
+      </ViewCriteriaRow>
+    </ViewCriteria>
+  </DeclarativeWhereClause>
+  <SortCriteria>
+    <Sort
+      Attribute="LastName"/>
+    <Sort
+      Attribute="FirstName"/>
+  </SortCriteria>
+  <SortCriteria>
+    <Sort
+      Attribute="LastName"/>
+    <Sort
+      Attribute="FirstName"/>
+  </SortCriteria>
+  <SortCriteria>
+    <Sort
+      Attribute="LastName"/>
+    <Sort
+      Attribute="FirstName"/>
+  </SortCriteria>
+</ViewObject>

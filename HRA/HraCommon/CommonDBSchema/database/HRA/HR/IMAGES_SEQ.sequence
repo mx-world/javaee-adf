@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<sequence xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
+  <name>IMAGES_SEQ</name>
+  <schema>
+    <name>HR</name>
+  </schema>
+</sequence>

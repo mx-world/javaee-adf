@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Images"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="IMAGES"
+  AliasName="Images"
+  BindingStyle="OracleName"
+  RowClass="org.mxworld.hra.model.eo.ImagesImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="ImageId"
+    Precision="6"
+    Scale="0"
+    ColumnName="IMAGE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="IMAGES"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="Image"
+    IsNotNull="true"
+    Precision="120"
+    ColumnName="IMAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IMAGES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="120"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="ImageUsages"
+    Association="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc"
+    AssociationEnd="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc.ImageUsages"
+    AssociationOtherEnd="org.mxworld.hra.model.assoc.ImageUsagesImagesFkAssoc.Images"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="ImagesPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="IMAGES_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.eo.Images.ImageId"/>
+    </AttrArray>
+  </Key>
+</Entity>

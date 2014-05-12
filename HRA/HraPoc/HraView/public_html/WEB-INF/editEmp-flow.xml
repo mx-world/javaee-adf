@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="editEmp-flow">
+    <default-activity>checkForExplicitID</default-activity>
+    <input-parameter-definition id="__4">
+      <name>empId</name>
+      <value>#{pageFlowScope.empId}</value>
+    </input-parameter-definition>
+    <managed-bean id="__3">
+      <managed-bean-name>empEditBean</managed-bean-name>
+      <managed-bean-class>org.mxworld.hra.view.backing.EmpEditBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="editEmp">
+      <page>/fragments/editEmp.jsff</page>
+    </view>
+    <router id="checkForExplicitID">
+      <case id="__9">
+        <expression>#{!empty pageFlowScope.empId}</expression>
+        <outcome>byId</outcome>
+      </case>
+      <default-outcome>currentUser</default-outcome>
+    </router>
+    <method-call id="queryEmployeeById">
+      <method>#{bindings.queryEmployeeById.execute}</method>
+      <outcome>
+        <fixed-outcome>queryEmployeeById</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>refresh</from-outcome>
+        <to-activity-id>checkForExplicitID</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>checkForExplicitID</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>currentUser</from-outcome>
+        <to-activity-id>editEmp</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>byId</from-outcome>
+        <to-activity-id>queryEmployeeById</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>queryEmployeeById</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>queryEmployeeById</from-outcome>
+        <to-activity-id>editEmp</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

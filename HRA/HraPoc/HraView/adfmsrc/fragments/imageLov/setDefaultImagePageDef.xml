@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="setDefaultImagePageDef"
+                Package="fragments.imageLov">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EditEmp" RangeSize="10" DataControl="HraServiceDataControl" id="EditEmpIterator"/>
+    <iterator Binds="AllEmpImages" RangeSize="25" DataControl="HraServiceDataControl" id="AllEmpImagesIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="EditEmpIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EditEmpIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction IterBinding="EditEmpIterator" id="defineDefaultImage" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="defineDefaultImage" IsViewObjectMethod="false" DataControl="HraServiceDataControl"
+                  InstanceName="bindings.EditEmpIterator.currentRow" IsLocalObjectReference="true">
+      <NamedData NDName="newDefaultImageId" NDType="java.lang.Integer"/>
+    </methodAction>
+    <tree IterBinding="AllEmpImagesIterator" id="AllEmpImages">
+      <nodeDefinition DefName="org.mxworld.hra.model.vo.AllEmpImages" Name="AllEmpImages0">
+        <AttrNames>
+          <Item Value="ImageId"/>
+          <Item Value="Image"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

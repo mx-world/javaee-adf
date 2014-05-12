@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LocationImageUsages"
+  Version="12.1.2.66.68"
+  Extends="org.mxworld.hra.model.eo.ImageUsages"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="IMAGE_USAGES"
+  AliasName="LocationImageUsages"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="UsageType"
+    IsNotNull="true"
+    DiscrColumn="true"
+    DefaultValue="L"
+    Precision="1"
+    ColumnName="USAGE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IMAGE_USAGES">
+    <DesignTime>
+      <Attr Name="_OverrideAttr" Value="true"/>
+    </DesignTime>
+  </Attribute>
+</Entity>

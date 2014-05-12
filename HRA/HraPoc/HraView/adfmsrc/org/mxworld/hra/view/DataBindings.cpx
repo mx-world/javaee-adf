@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="org.mxworld.hra.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/WEB-INF/templates/hra-page-template.jsf" usageId="org_mxworld_hra_view_hra_page_templatePageDef"/>
+    <page path="/templateTest.jsf" usageId="org_mxworld_hra_view_templateTestPageDef"/>
+    <page path="/empSearch.jsf" usageId="org_mxworld_hra_view_empSearchPageDef"/>
+    <page path="/fragments/searchUI.jsff" usageId="org_mxworld_hra_view_searchUIPageDef"/>
+    <page path="/fragments/deptTree.jsff" usageId="org_mxworld_hra_view_deptTreePageDef"/>
+    <page path="/fragments/editEmp.jsff" usageId="org_mxworld_hra_view_editEmpPageDef"/>
+    <page path="/fragments/imageLov/addImage.jsff" usageId="org_mxworld_hra_view_addImagePageDef"/>
+    <page path="/fragments/imageLov/setDefaultImage.jsff" usageId="org_mxworld_hra_view_setDefaultImagePageDef"/>
+    <page path="/empEdit.jsf" usageId="org_mxworld_hra_view_empEditPageDef"/>
+    <page path="/WEB-INF/editEmp-flow.xml#editEmp-flow@queryEmployeeById"
+          usageId="org_mxworld_hra_view_editEmp_flow_editEmp_flow_queryEmployeeByIdPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="org_mxworld_hra_view_hra_page_templatePageDef" path="templates.hra_page_templatePageDef"/>
+    <page id="org_mxworld_hra_view_templateTestPageDef" path="org.mxworld.hra.view.pageDefs.templateTestPageDef"/>
+    <page id="org_mxworld_hra_view_empSearchPageDef" path="org.mxworld.hra.view.pageDefs.empSearchPageDef"/>
+    <page id="org_mxworld_hra_view_searchUIPageDef" path="fragments.searchUIPageDef"/>
+    <page id="org_mxworld_hra_view_deptTreePageDef" path="fragments.deptTreePageDef"/>
+    <page id="org_mxworld_hra_view_editEmpPageDef" path="fragments.editEmpPageDef"/>
+    <page id="org_mxworld_hra_view_addImagePageDef" path="fragments.imageLov.addImagePageDef"/>
+    <page id="org_mxworld_hra_view_setDefaultImagePageDef" path="fragments.imageLov.setDefaultImagePageDef"/>
+    <page id="org_mxworld_hra_view_empEditPageDef" path="org.mxworld.hra.view.pageDefs.empEditPageDef"/>
+    <page id="org_mxworld_hra_view_editEmp_flow_editEmp_flow_queryEmployeeByIdPageDef"
+          path="org.mxworld.hra.view.pageDefs.editEmp_flow_editEmp_flow_queryEmployeeByIdPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="HraServiceDataControl" Package="org.mxworld.hra.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="HraServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

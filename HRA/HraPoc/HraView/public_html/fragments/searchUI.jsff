@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" topHeight="180px" bottomHeight="0px">
+    <f:facet name="top">
+      <af:panelHeader text="Enter Search Criteria" id="ph1">
+        <af:query id="basicEmpSearchCriteriaQuery" headerText="Search" disclosed="true"
+                  value="#{bindings.BasicEmpSearchCriteriaQuery.queryDescriptor}"
+                  model="#{bindings.BasicEmpSearchCriteriaQuery.queryModel}"
+                  queryListener="#{bindings.BasicEmpSearchCriteriaQuery.processQuery}"
+                  queryOperationListener="#{bindings.BasicEmpSearchCriteriaQuery.processQueryOperation}"
+                  resultComponentId="::pc1:basicEmpSearchCriteriaQueryResult" displayMode="compact"/>
+      </af:panelHeader>
+    </f:facet>
+    
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus">
+          <af:menu text="Actions" id="m1">
+            <af:commandMenuItem text="Export to Excel" id="cmi1"
+                                disabled="#{bindings.EmpSearch.estimatedRowCount&lt;1}"
+                                partialTriggers="::basicEmpSearchCriteriaQuery">
+              <af:exportCollectionActionListener type="excelHTML" exportedId="basicEmpSearchCriteriaQueryResult"
+                                                 filename="SearchResults" title="HRA Employee Search Results"/>
+            </af:commandMenuItem>
+            <af:commandMenuItem text="Edit Employee" id="cmi4" action="edit">
+              <af:setPropertyListener from="#{bindings.EmployeeId.inputValue.value}" to="#{uiState.editEmpId}"
+                                      type="action"/>
+            </af:commandMenuItem>
+          </af:menu>
+        </f:facet>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.EmpSearch.collectionModel}" var="row" rows="#{bindings.EmpSearch.rangeSize}"
+                  emptyText="#{bindings.EmpSearch.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" selectedRowKeys="#{bindings.EmpSearch.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.EmpSearch.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.EmpSearch.rangeSize}" id="basicEmpSearchCriteriaQueryResult"
+                  columnStretching="last">
+          <af:column sortProperty="#{bindings.EmpSearch.hints.FirstName.name}" sortable="true"
+                     headerText="#{bindings.EmpSearch.hints.FirstName.label}" id="resId1c1">
+            <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.EmpSearch.hints.FirstName.tooltip}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.EmpSearch.hints.LastName.name}" sortable="true"
+                     headerText="#{bindings.EmpSearch.hints.LastName.label}" id="resId1c2">
+            <af:outputText value="#{row.LastName}" shortDesc="#{bindings.EmpSearch.hints.LastName.tooltip}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.EmpSearch.hints.JobTitle.name}" sortable="true"
+                     headerText="#{bindings.EmpSearch.hints.JobTitle.label}" id="resId1c3" width="150">
+            <af:outputText value="#{row.JobTitle}" shortDesc="#{bindings.EmpSearch.hints.JobTitle.tooltip}" id="ot3"/>
+          </af:column>
+          <af:column headerText="Contact Information" sortable="true" id="resId1c4">
+            <af:column sortProperty="#{bindings.EmpSearch.hints.Email.name}" sortable="true"
+                       headerText="#{bindings.EmpSearch.hints.Email.label}" id="c1">
+              <af:outputText value="#{row.Email}" shortDesc="#{bindings.EmpSearch.hints.Email.tooltip}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.EmpSearch.hints.PhoneNumber.name}" sortable="true"
+                       headerText="#{bindings.EmpSearch.hints.PhoneNumber.label}" id="c2" width="150">
+              <af:outputText value="#{row.PhoneNumber}" shortDesc="#{bindings.EmpSearch.hints.PhoneNumber.tooltip}"
+                             id="ot5"/>
+            </af:column>
+          </af:column>
+          <af:column sortProperty="#{bindings.EmpSearch.hints.DepartmentName.name}" sortable="true"
+                     headerText="#{bindings.EmpSearch.hints.DepartmentName.label}" id="resId1c5">
+            <af:outputText value="#{row.DepartmentName}" shortDesc="#{bindings.EmpSearch.hints.DepartmentName.tooltip}"
+                           id="ot6"/>
+          </af:column>
+          <f:facet name="contextMenu">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="contextMenuPopup">
+              <af:menu text="menu 1" id="m2">
+                <af:commandMenuItem text="View Employee" id="cmi3">
+                  <af:showPopupBehavior popupId=":::empDetailPopup"/>
+                </af:commandMenuItem>
+                <af:commandMenuItem text="Edit Employee" id="cmi5" action="edit">
+                  <af:setPropertyListener from="#{row.EmployeeId.value}" to="#{uiState.editEmpId}" type="action"/>
+                </af:commandMenuItem>
+              </af:menu>
+            </af:popup>
+          </f:facet>
+        </af:table>
+        <f:facet name="viewMenu">
+          <af:commandMenuItem text="View Employee" id="cmi2">
+            <af:showPopupBehavior popupId="::empDetailPopup" triggerType="action"/>
+          </af:commandMenuItem>
+        </f:facet>
+      </af:panelCollection>
+    </f:facet>
+
+    <f:facet name="bottom">
+      <af:popup childCreation="deferred" autoCancel="disabled" id="empDetailPopup" contentDelivery="lazyUncached">
+        <af:dialog id="d1" type="ok" title="Employee Detail">
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.EmployeeId.inputValue}" label="#{bindings.EmployeeId.hints.label}"
+                          required="#{bindings.EmployeeId.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.EmployeeId.hints.displayWidth}"
+                          maximumLength="#{bindings.EmployeeId.hints.precision}"
+                          shortDesc="#{bindings.EmployeeId.hints.tooltip}" id="it1">
+              <f:validator binding="#{bindings.EmployeeId.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                          required="#{bindings.FirstName.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.FirstName.hints.displayWidth}"
+                          maximumLength="#{bindings.FirstName.hints.precision}"
+                          shortDesc="#{bindings.FirstName.hints.tooltip}" id="it2">
+              <f:validator binding="#{bindings.FirstName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                          required="#{bindings.LastName.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.LastName.hints.displayWidth}"
+                          maximumLength="#{bindings.LastName.hints.precision}"
+                          shortDesc="#{bindings.LastName.hints.tooltip}" id="it3">
+              <f:validator binding="#{bindings.LastName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                          required="#{bindings.Email.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.Email.hints.displayWidth}"
+                          maximumLength="#{bindings.Email.hints.precision}" shortDesc="#{bindings.Email.hints.tooltip}"
+                          id="it4">
+              <f:validator binding="#{bindings.Email.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.PhoneNumber.inputValue}" label="#{bindings.PhoneNumber.hints.label}"
+                          required="#{bindings.PhoneNumber.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.PhoneNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.PhoneNumber.hints.precision}"
+                          shortDesc="#{bindings.PhoneNumber.hints.tooltip}" id="it5">
+              <f:validator binding="#{bindings.PhoneNumber.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.DepartmentName.inputValue}" label="#{bindings.DepartmentName.hints.label}"
+                          required="#{bindings.DepartmentName.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.DepartmentName.hints.displayWidth}"
+                          maximumLength="#{bindings.DepartmentName.hints.precision}"
+                          shortDesc="#{bindings.DepartmentName.hints.tooltip}" id="it6">
+              <f:validator binding="#{bindings.DepartmentName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.JobTitle.inputValue}" label="#{bindings.JobTitle.hints.label}"
+                          required="#{bindings.JobTitle.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.JobTitle.hints.displayWidth}"
+                          maximumLength="#{bindings.JobTitle.hints.precision}"
+                          shortDesc="#{bindings.JobTitle.hints.tooltip}" id="it7">
+              <f:validator binding="#{bindings.JobTitle.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <f:facet name="buttonBar"/>
+        </af:dialog>
+      </af:popup>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+  </af:panelStretchLayout>
+</ui:composition>

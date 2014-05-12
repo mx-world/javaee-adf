@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<sequence xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
+  <name>LOCATIONS_SEQ</name>
+  <cacheFlag>false</cacheFlag>
+  <cycleFlag>false</cycleFlag>
+  <incrementBy>100</incrementBy>
+  <lastNumber>3300</lastNumber>
+  <maxValue>9900</maxValue>
+  <minValue>1</minValue>
+  <orderFlag>false</orderFlag>
+  <properties>
+    <entry>
+      <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
+      <value class="java.lang.String">hr</value>
+    </entry>
+    <entry>
+      <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+      <value class="oracle.javatools.db.ReferenceID">
+        <name>LOCATIONS_SEQ</name>
+        <identifier class="java.math.BigDecimal">16397</identifier>
+        <schemaName>HR</schemaName>
+        <type>SEQUENCE</type>
+      </value>
+    </entry>
+  </properties>
+  <schema>
+    <name>HR</name>
+  </schema>
+</sequence>

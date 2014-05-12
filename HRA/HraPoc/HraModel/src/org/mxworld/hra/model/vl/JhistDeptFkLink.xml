@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="JhistDeptFkLink"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="org.mxworld.hra.model.assoc.JhistDeptFkAssoc">
+  <ViewLinkDefEnd
+    Name="DeptList"
+    Cardinality="1"
+    Source="true"
+    Owner="org.mxworld.hra.model.vo.DeptList">
+    <DesignTime>
+      <Attr Name="_finderName" Value="DeptList"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.vo.DeptList.DepartmentId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AllJobHistory"
+    Cardinality="-1"
+    Owner="org.mxworld.hra.model.vo.AllJobHistory">
+    <DesignTime>
+      <Attr Name="_finderName" Value="AllJobHistory"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="org.mxworld.hra.model.vo.AllJobHistory.DepartmentId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
